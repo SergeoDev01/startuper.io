@@ -28,7 +28,7 @@ export interface Footer7Props {
 
 export function Footer7({
   logo,
-  brandName = 'Watermelon',
+  brandName = 'Startuper.io',
   badgeText = 'Loved by Creators',
   headline = 'Fresh insights, tutorials, and updates delivered to your inbox.',
   inputPlaceholder = 'Enter your email',
@@ -75,11 +75,11 @@ export function Footer7({
               <Input
                 type="email"
                 placeholder={inputPlaceholder}
-                className="border-white/15 bg-white/10 h-12 min-h-12 flex-1 rounded-l-xl border px-4 text-sm text-white placeholder:text-white/70 focus-visible:border-orange-600/50 focus-visible:ring-orange-600/30"
+                className="border-white/15 bg-white/10 h-12 min-h-12 flex-1 rounded-l-md border px-4 text-sm text-white placeholder:text-white/70 focus-visible:border-orange-600/50 focus-visible:ring-orange-600/30"
               />
               <Button
                 type="submit"
-                className="text-primary-foreground group flex h-12 shrink-0 cursor-pointer items-center gap-2 rounded-r-xl bg-[#FF4202] px-5 font-semibold shadow-[inset_0_0_8px_0.5px_rgba(255,255,255,0.3)] transition-all"
+                className="text-primary-foreground group flex h-12 shrink-0 cursor-pointer items-center gap-2 rounded-r-md bg-[#FF4202] px-5 font-semibold shadow-[inset_0_0_8px_0.5px_rgba(255,255,255,0.3)] transition-all"
               >
                 <span>{buttonText}</span>
                 {buttonIcon && (

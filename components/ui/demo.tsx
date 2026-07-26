@@ -22,7 +22,7 @@ export default function Demo() {
       <NavigationSection />
       <Hero31
         title="Innovation that Drives Impact."
-        subtitle="Watermelon empowers teams to build, scale, and transform with technology that drives real results."
+        subtitle="Startuper.io empowers teams to build, scale, and transform with technology that drives real results."
         ctaText="Request a Demo"
         trustedByText="TRUSTED BY AMBITIOUS TEAMS"
         backgroundImage="https://assets.watermelon.sh/hero-31-bg.avif"
@@ -39,7 +39,7 @@ export default function Demo() {
       <ProjectInquirySection />
       <Footer7
         logo={<LogoIcon className="size-8" />}
-        brandName="Watermelon"
+        brandName="Startuper.io"
         badgeText="Loved by Creators"
         headline="Fresh insights, tutorials, and updates delivered to your inbox."
         inputPlaceholder="Enter your email"

@@ -74,10 +74,10 @@ export default function SolutionSection({
                   key={index}
                   className="flex min-h-[30vh] flex-col justify-center py-4 scroll-mt-[40vh]"
                 >
-                  <motion.div
-                    style={{ opacity }}
-                    className="relative -mx-6 rounded-xl p-6 transition duration-300 bg-white/[0.05] text-[var(--text-primary)] shadow-sm"
-                  >
+                    <motion.div
+                      style={{ opacity }}
+                      className="relative -mx-6 rounded-md p-6 transition duration-300 bg-white/[0.05] text-[var(--text-primary)] shadow-sm"
+                    >
                     <span className="text-xs font-semibold tabular-nums tracking-[0.2em] text-[var(--text-tertiary)]">
                       {String(index + 1).padStart(2, '0')}
                     </span>
@@ -99,9 +99,9 @@ export default function SolutionSection({
               <div className="relative aspect-square w-full max-w-[420px]">
                 {/* Persistent glow backdrop */}
                 <div className="pointer-events-none absolute -inset-16 -z-10">
-                  <div className="absolute -inset-px left-0 top-0 h-2/3 w-2/3 rounded-2xl opacity-10 blur-xl bg-gradient-to-br from-purple-500 to-indigo-500" />
-                  <div className="absolute -inset-px right-0 top-1/4 h-2/3 w-2/3 rounded-2xl opacity-10 blur-xl bg-gradient-to-br from-cyan-500 to-sky-500" />
-                  <div className="absolute -inset-px bottom-0 left-1/4 h-2/3 w-2/3 rounded-2xl opacity-10 blur-xl bg-gradient-to-br from-amber-500 to-orange-500" />
+                  <div className="absolute -inset-px left-0 top-0 h-2/3 w-2/3 rounded-lg opacity-10 blur-xl bg-gradient-to-br from-purple-500 to-indigo-500" />
+                  <div className="absolute -inset-px right-0 top-1/4 h-2/3 w-2/3 rounded-lg opacity-10 blur-xl bg-gradient-to-br from-cyan-500 to-sky-500" />
+                  <div className="absolute -inset-px bottom-0 left-1/4 h-2/3 w-2/3 rounded-lg opacity-10 blur-xl bg-gradient-to-br from-amber-500 to-orange-500" />
                 </div>
 
                 {steps.map((step, index) => {
@@ -114,7 +114,7 @@ export default function SolutionSection({
                     <motion.div
                       key={index}
                       style={{ opacity, scale }}
-                      className="absolute inset-0 flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] p-8 shadow-[inset_0_1px_0px_rgba(255,255,255,0.06)] backdrop-blur-md flex flex-col justify-between"
+                      className="absolute inset-0 flex items-center justify-center rounded-lg border border-white/10 bg-white/[0.03] p-8 shadow-[inset_0_1px_0px_rgba(255,255,255,0.06)] backdrop-blur-md flex flex-col justify-between"
                     >
                       <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--text-tertiary)]">
                         Phase {String(index + 1).padStart(2, '0')}

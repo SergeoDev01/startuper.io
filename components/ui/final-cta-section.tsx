@@ -28,7 +28,7 @@ export default function FinalCtaSection({
         </p>
 
         {/* CTA — matches hero button at rest */}
-        <button className="group mt-4 flex h-14 items-center gap-3 rounded-2xl border border-white/20 bg-[var(--cta-bg)] px-8 text-base font-medium text-[var(--cta-text)] shadow-[inset_0_2px_0px_rgba(255,255,255,1),inset_0_-2px_0px_rgba(0,0,0,0.2)] transition-transform active:scale-[0.96]">
+        <button className="group mt-4 flex h-14 items-center gap-3 rounded-md bg-[#FF4202] px-8 text-base font-semibold text-white shadow-[inset_0_0_8px_0.5px_rgba(255,255,255,0.3)] transition-transform active:scale-[0.96]">
           {ctaText}
           <span className="transition-transform group-hover:translate-x-1">→</span>
         </button>

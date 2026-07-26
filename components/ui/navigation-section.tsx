@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import LogoIcon from '@/assets/logo-icon';
 import {
   Cpu,
   Layers,
@@ -61,7 +62,7 @@ export interface NavigationSectionProps {
 }
 
 export default function NavigationSection({
-  logoText = 'Watermelon',
+  logoText = 'Startuper.io',
   signInText = 'Sign in',
   getStartedText = 'Get started',
 }: NavigationSectionProps) {
@@ -75,18 +76,7 @@ export default function NavigationSection({
           {/* Logo */}
           <div className="flex items-center gap-2">
             <div className="flex h-8 w-8 items-center justify-center text-white">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-6 w-6 fill-current"
-              >
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-              </svg>
+              <LogoIcon className="h-6 w-6 text-white" />
             </div>
             <span className="text-lg font-bold tracking-tight text-white">
               {logoText}
@@ -99,7 +89,7 @@ export default function NavigationSection({
               <a
                 key={link.label}
                 href="#"
-                className="flex items-center gap-2 rounded-xl px-3 py-1.5 text-sm font-medium text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+                className="flex items-center gap-2 rounded-md px-3 py-1.5 text-sm font-medium text-white/70 transition-colors hover:bg-white/10 hover:text-white"
               >
                 {link.label}
                 {link.badge && (
@@ -118,7 +108,7 @@ export default function NavigationSection({
             >
               <button
                 onClick={() => setSolutionsOpen((v) => !v)}
-                className="flex items-center gap-1 rounded-xl px-3 py-1.5 text-sm font-medium text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+                className="flex items-center gap-1 rounded-md px-3 py-1.5 text-sm font-medium text-white/70 transition-colors hover:bg-white/10 hover:text-white"
               >
                 Solutions
                 <svg
@@ -136,10 +126,10 @@ export default function NavigationSection({
 
               {solutionsOpen && (
                 <div className="absolute left-0 top-full w-[640px] pt-3">
-                  <div className="grid grid-cols-4 gap-6 rounded-2xl border border-white/10 bg-black/50 p-6 shadow-2xl backdrop-blur-xl backdrop-saturate-150">
+                  <div className="grid grid-cols-4 gap-6 rounded-lg border border-white/10 bg-black/50 p-6 shadow-2xl backdrop-blur-xl backdrop-saturate-150">
                     {/* Column 1 — featured card */}
                     <div className="flex flex-col">
-                      <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/10">
+                      <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-md bg-white/10">
                         <Cpu className="h-5 w-5 text-white/80" />
                       </div>
                       <h4 className="mb-1 text-sm font-medium text-white">
@@ -188,7 +178,7 @@ export default function NavigationSection({
                     {/* Featured callout */}
                     <a
                       href="#"
-                      className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6"
+                      className="group relative flex flex-col justify-between overflow-hidden rounded-lg border border-white/10 bg-white/5 p-6"
                     >
                       <div className="absolute inset-0 -z-10 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
                       <div>
@@ -216,10 +206,10 @@ export default function NavigationSection({
 
           {/* Desktop actions */}
           <div className="hidden items-center gap-3 lg:flex">
-            <button className="rounded-xl px-3 py-2 text-sm font-medium text-white/70 transition-colors hover:bg-white/10 hover:text-white">
+            <button className="rounded-md px-3 py-2 text-sm font-medium text-white/70 transition-colors hover:bg-white/10 hover:text-white">
               {signInText}
             </button>
-            <button className="rounded-xl bg-white px-4 py-2 text-sm font-semibold text-black shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] transition-transform active:scale-[0.97]">
+            <button className="rounded-md bg-[#FF4202] px-4 py-2 text-sm font-semibold text-white shadow-[inset_0_0_8px_0.5px_rgba(255,255,255,0.3)] transition-transform active:scale-[0.97]">
               {getStartedText}
             </button>
           </div>
@@ -228,7 +218,7 @@ export default function NavigationSection({
         {/* Mobile toggle */}
         <button
           onClick={() => setMobileOpen((v) => !v)}
-          className="flex h-10 w-10 items-center justify-center rounded-xl text-white/80 transition-colors hover:bg-white/10 lg:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-md text-white/80 transition-colors hover:bg-white/10 lg:hidden"
           aria-label="Toggle navigation menu"
         >
           {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -288,10 +278,10 @@ export default function NavigationSection({
             </div>
 
             <div className="mt-4 flex flex-col gap-3 border-t border-white/10 pt-4">
-              <button className="w-full justify-center rounded-xl border border-white/15 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white/10">
+              <button className="w-full justify-center rounded-md border border-white/15 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white/10">
                 {signInText}
               </button>
-              <button className="w-full justify-center rounded-xl bg-white px-4 py-2 text-sm font-semibold text-black">
+              <button className="w-full justify-center rounded-md bg-[#FF4202] px-4 py-2 text-sm font-semibold text-white shadow-[inset_0_0_8px_0.5px_rgba(255,255,255,0.3)]">
                 {getStartedText}
               </button>
             </div>

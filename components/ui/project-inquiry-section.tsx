@@ -75,7 +75,7 @@ export default function ProjectInquirySection({
 
         <div className="grid gap-12 lg:grid-cols-5 lg:gap-16">
           <div className="lg:col-span-3">
-            <form onSubmit={handleSubmit} className="space-y-8">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid gap-6 sm:grid-cols-2">
                 <div className="space-y-2">
                   <Label htmlFor="fullName" className="text-sm font-medium">
@@ -190,7 +190,7 @@ export default function ProjectInquirySection({
                   </div>
                 </div>
 
-                <div className="space-y-2 sm:col-span-2">
+                <div className="space-y-2">
                   <Label htmlFor="teamSize" className="text-sm font-medium">
                     Team Size Required
                   </Label>
@@ -222,14 +222,16 @@ export default function ProjectInquirySection({
                   <Label htmlFor="message" className="text-sm font-medium">
                     Project Details
                   </Label>
-                  <Textarea
-                    id="message"
-                    rows={5}
-                    placeholder="Describe your goals, challenges, and any specific requirements..."
-                    value={formData.message}
-                    onChange={(e) => updateField('message', e.target.value)}
-                    className="w-full resize-none border-0 bg-transparent px-3 py-2.5 outline-none"
-                  />
+                  <div className="rounded-md border border-white/10 bg-white/[0.03] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] transition-colors hover:border-[#FF4202]/55 focus-within:border-[#FF4202]">
+                    <Textarea
+                      id="message"
+                      rows={5}
+                      placeholder="Describe your goals, challenges, and any specific requirements..."
+                      value={formData.message}
+                      onChange={(e) => updateField('message', e.target.value)}
+                      className="w-full resize-none border-0 bg-transparent px-3 py-2.5 outline-none"
+                    />
+                  </div>
                 </div>
               </div>
 
@@ -264,9 +266,9 @@ export default function ProjectInquirySection({
                 </ul>
               </div>
 
-              <div className="bg-[var(--primary)] text-[var(--primary-foreground)] relative overflow-hidden rounded-2xl p-8 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.5),inset_0_-1px_0_0_rgba(0,0,0,0.3)]">
-                <div className="bg-[var(--primary-foreground)]/10 absolute -top-8 -right-8 h-32 w-32 rounded-full" />
-                <div className="bg-[var(--primary-foreground)]/10 absolute -bottom-8 -left-8 h-24 w-24 rounded-full" />
+              <div className="bg-[#FF4202] text-white relative overflow-hidden rounded-lg p-8 shadow-[inset_0_0_8px_0.5px_rgba(255,255,255,0.3)]">
+                <div className="bg-white/10 absolute -top-8 -right-8 h-32 w-32 rounded-full" />
+                <div className="bg-white/10 absolute -bottom-8 -left-8 h-24 w-24 rounded-full" />
                 <h3 className="text-xl font-medium tracking-tight">
                   Response Time
                 </h3>

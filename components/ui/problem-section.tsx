@@ -51,7 +51,7 @@ export default function ProblemSection({
 
         {/* CTA — matches hero button at rest (zinc-200, black text, inset shadow) */}
         <div className="mt-16">
-          <button className="group flex h-12 items-center gap-2 rounded-xl border border-white/20 bg-[var(--cta-bg)] px-6 text-sm font-medium text-[var(--cta-text)] shadow-[inset_0_2px_0px_rgba(255,255,255,1),inset_0_-2px_0px_rgba(0,0,0,0.2)] transition-transform active:scale-[0.96]">
+          <button className="group flex h-12 items-center gap-2 rounded-md bg-[#FF4202] px-6 text-sm font-semibold text-white shadow-[inset_0_0_8px_0.5px_rgba(255,255,255,0.3)] transition-transform active:scale-[0.96]">
             {ctaText}
             <span className="transition-transform group-hover:translate-x-1">→</span>
           </button>

@@ -27,17 +27,17 @@ export const surface = {
   // Every text field shares h-11 (44px) + inline-flex so Input and Select
   // render at an identical height and baseline.
   field:
-    'flex h-11 w-full items-center rounded-md border border-white/10 bg-white/[0.03] px-3 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]',
+    'flex h-11 w-full items-center rounded-md border border-white/10 bg-white/[0.03] px-3 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] transition-colors hover:border-[#FF4202]/55 focus-within:border-[#FF4202]',
   // Icon-prefixed field: same h-11 so the inner input matches plain fields.
   iconField:
-    'flex h-11 w-full items-center rounded-md border border-white/10 bg-white/[0.03] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] relative',
+    'flex h-11 w-full items-center rounded-md border border-white/10 bg-white/[0.03] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] relative transition-colors hover:border-[#FF4202]/55 focus-within:border-[#FF4202]',
 };
 
-/** Primary call-to-action button — matches the hero / problem CTA at rest. */
+/** Primary call-to-action button — matches the footer CTA style at rest. */
 export const ctaButton =
-  'group inline-flex h-12 items-center gap-2 bg-[var(--cta-bg)] px-6 text-sm font-medium text-[var(--cta-text)] shadow-[inset_0_2px_0px_rgba(255,255,255,1),inset_0_-2px_0px_rgba(0,0,0,0.2)] transition-transform active:scale-[0.96]';
+  'group inline-flex h-12 items-center gap-2 rounded-md bg-[#FF4202] px-6 text-sm font-semibold text-white shadow-[inset_0_0_8px_0.5px_rgba(255,255,255,0.3)] transition-transform active:scale-[0.96]';
 
 /** Accent (primary) button — used for submit / highlighted actions.
  *  h-12 to match the other page CTAs; explicit transition props (no `all`). */
 export const accentButton =
-  'inline-flex h-12 items-center justify-center gap-2 bg-[var(--primary)] px-6 text-sm font-semibold text-[var(--primary-foreground)] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.5),inset_0_-1px_0_0_rgba(0,0,0,0.3)] transition-[transform,background-color,box-shadow] active:scale-[0.96]';
+  'inline-flex h-12 items-center justify-center gap-2 rounded-md bg-[#FF4202] px-6 text-sm font-semibold text-white shadow-[inset_0_0_8px_0.5px_rgba(255,255,255,0.3)] transition-[transform,background-color,box-shadow] active:scale-[0.96]';

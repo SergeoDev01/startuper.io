@@ -94,14 +94,14 @@ export default function PillarsSection({
             return (
               <Card
                 key={index}
-                className={`rounded-3xl ring-0 bg-white/[0.04] transition-all duration-300 hover:bg-white/[0.06] hover:shadow-[0_10px_30px_rgba(0,0,0,0.4)] ${
+                className={`rounded-lg ring-0 bg-white/[0.04] transition-all duration-300 hover:bg-white/[0.06] hover:shadow-[0_10px_30px_rgba(0,0,0,0.4)] ${
                   isTall ? 'md:row-span-2 flex flex-col justify-between' : ''
                 }`}
               >
                 <CardContent
                   className={isTall ? 'flex h-full flex-col p-6' : 'p-6'}
                 >
-                  <div className="mb-4 inline-flex size-11 items-center justify-center rounded-xl bg-white/[0.06] shadow-[0_1px_2px_rgba(0,0,0,0.25)]">
+                  <div className="mb-4 inline-flex size-11 items-center justify-center rounded-md bg-white/[0.06] shadow-[0_1px_2px_rgba(0,0,0,0.25)]">
                     <Icon className={`h-5 w-5 ${pillar.iconColor}`} />
                   </div>
                   <h3 className="mb-1 text-lg font-medium">{pillar.title}</h3>

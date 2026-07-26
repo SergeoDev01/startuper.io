@@ -102,7 +102,7 @@ export default function ComparisonBlock() {
             </CardFooter>
           </Card>
 
-          <Card className="bg-muted/30 flex flex-col justify-between">
+          <Card className="border border-white/10 bg-white/[0.03] flex flex-col justify-between">
             <CardHeader>
               <CardTitle className="text-lg font-semibold text-muted-foreground">
                 Not a fit (yet)

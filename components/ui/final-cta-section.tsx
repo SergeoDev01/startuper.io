@@ -11,12 +11,12 @@ export default function FinalCtaSection({
 }: FinalCtaSectionProps) {
   return (
     <section className="relative w-full overflow-hidden bg-[var(--bg-primary)] px-6 py-32 font-sans text-[var(--text-primary)] md:px-12 md:py-40">
-      {/* Subtle glow — white radial, no invented warm color */}
+      {/* Subtle glow — orange radial matching design system */}
       <div
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            'radial-gradient(60% 60% at 50% 0%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%)',
+            'radial-gradient(60% 60% at 50% 0%, rgba(249, 115, 22, 0.12) 0%, rgba(249, 115, 22, 0) 70%)',
         }}
       />
       <div className="relative mx-auto flex max-w-3xl flex-col items-center gap-6 text-center">

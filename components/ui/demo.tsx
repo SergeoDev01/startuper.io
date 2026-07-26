@@ -7,7 +7,6 @@ import SolutionSection from './solution-section';
 import PillarsSection from './pillars-section';
 import ProofSection from './proof-section';
 import TestimonialsSection from './testimonials-section';
-import WhoItsForSection from './who-its-for-section';
 import ProgramSection from './program-section';
 import FaqSection from './faq-section';
 import FinalCtaSection from './final-cta-section';
@@ -34,7 +33,6 @@ export default function Demo() {
       <ProofSection />
       <TestimonialsSection />
       <ComparisonBlock />
-      <WhoItsForSection />
       <ProgramSection />
       <FaqSection />
       <FinalCtaSection />

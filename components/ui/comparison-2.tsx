@@ -17,26 +17,18 @@ import {
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 
-const acmePoints = [
-  "Onboarding completed in under 10 minutes",
-  "Real-time sync across all devices and team members",
-  "Granular role-based access control included",
-  "99.99 % uptime SLA with status page",
-  "Dedicated Slack channel for Pro customers",
-  "SOC 2 Type II certified infrastructure",
-  "One-click data export in any format",
-  "No per-seat fees, unlimited collaborators",
+const fitPoints = [
+  "Teams shipping real products, not just decks",
+  "Orgs tired of context lost between tools",
+  "Leaders who want signal, not status meetings",
+  "Groups ready to run one continuous loop",
 ];
 
-const othersPoints = [
-  "Complex setup requires engineering resources",
-  "Sync delays of up to 15 minutes on free tiers",
-  "Permissions locked behind enterprise plan",
-  "SLA only available on custom contracts",
-  "Email-only support with 48 h response time",
-  "Compliance docs behind sales call",
-  "Data export limited to CSV on lower plans",
-  "Per-seat pricing adds up fast at scale",
+const notFitPoints = [
+  "One-person side projects with no handoffs",
+  "Teams that prefer their stack as-is",
+  "Workloads that never repeat or compound",
+  "Orgs not ready to change how they operate",
 ];
 
 function CheckRow({ text }: { text: string }) {
@@ -63,49 +55,48 @@ function CrossRow({ text }: { text: string }) {
 
 export default function ComparisonBlock() {
   return (
-    <section className="flex w-full items-center justify-center bg-background px-6 py-12 text-foreground">
-      <div className="mx-auto w-full max-w-4xl">
-        <div className="mb-10 text-center">
+    <section className="flex w-full items-center justify-center bg-[var(--bg-secondary)] px-6 py-24 text-[var(--text-primary)]">
+      <div className="mx-auto w-full max-w-5xl">
+        <div className="mb-16 text-center max-w-2xl mx-auto">
           <Badge variant="outline" className="mb-4">
             <RiShieldCheckLine data-icon="inline-start" />
-            Why Acme
+            Who it’s for
           </Badge>
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Built differently, on purpose
+          <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">
+            Built for teams that move in loops, not in lines.
           </h2>
-          <p className="mt-3 text-sm text-muted-foreground">
-            We obsessed over the details others skip. Here is what that means
-            for your team every single day.
+          <p className="mt-4 text-base text-muted-foreground">
+            Determine if our continuous motion system is the right fit for your organization right now.
           </p>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 items-stretch">
-          <Card className="border-primary/30 ring-primary/20 flex flex-col justify-between">
+        <div className="grid gap-6 sm:grid-cols-2 items-stretch">
+          <Card className="border-primary/30 ring-primary/25 flex flex-col justify-between bg-card">
             <CardHeader>
               <div className="flex items-center justify-between">
-                <CardTitle className="text-base font-semibold">Acme</CardTitle>
+                <CardTitle className="text-lg font-semibold">It’s a fit</CardTitle>
                 <Badge variant="default">Recommended</Badge>
               </div>
               <CardDescription>
-                Everything your team needs, without the enterprise runaround.
+                For teams ready to compound impact and eliminate friction.
               </CardDescription>
             </CardHeader>
 
             <Separator />
 
-            <CardContent className="pt-4 flex-1">
-              <ul className="flex flex-col gap-3">
-                {acmePoints.map((point) => (
+            <CardContent className="pt-6 flex-1">
+              <ul className="flex flex-col gap-4">
+                {fitPoints.map((point) => (
                   <CheckRow key={point} text={point} />
                 ))}
               </ul>
             </CardContent>
 
-            <CardFooter className="border-t pt-4">
+            <CardFooter className="border-t pt-6">
               <Button
                 className="w-full"
               >
-                Start for Free
+                Apply Now
                 <RiArrowRightLine data-icon="inline-end" />
               </Button>
             </CardFooter>
@@ -113,30 +104,30 @@ export default function ComparisonBlock() {
 
           <Card className="bg-muted/30 flex flex-col justify-between">
             <CardHeader>
-              <CardTitle className="text-base font-semibold text-muted-foreground">
-                The others
+              <CardTitle className="text-lg font-semibold text-muted-foreground">
+                Not a fit (yet)
               </CardTitle>
               <CardDescription>
-                Common friction points teams encounter with legacy platforms.
+                When our continuous loop system isn't the right match.
               </CardDescription>
             </CardHeader>
 
             <Separator />
 
-            <CardContent className="pt-4 flex-1">
-              <ul className="flex flex-col gap-3">
-                {othersPoints.map((point) => (
+            <CardContent className="pt-6 flex-1">
+              <ul className="flex flex-col gap-4">
+                {notFitPoints.map((point) => (
                   <CrossRow key={point} text={point} />
                 ))}
               </ul>
             </CardContent>
 
-            <CardFooter className="border-t pt-4">
+            <CardFooter className="border-t pt-6">
               <Button
                 variant="secondary"
                 className="w-full"
               >
-                See Why Teams Switch
+                Learn More
                 <RiArrowRightLine data-icon="inline-end" />
               </Button>
             </CardFooter>

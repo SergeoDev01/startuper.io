@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* 60% — Dominante (fonds) */
+  --bg-primary: #000000;
+  --bg-secondary: #0A0A0A;
+
+  /* 10% — Accent (boutons, actions) */
+  --cta-bg: #E4E4E7;        /* bouton "Sign up" (zinc-200) */
+  --cta-bg-alt: #D4D4D8;    /* bouton "Request a Demo" (zinc-300) */
+  --cta-text: #000000;      /* texte des deux boutons */
+
+  /* Primary action (submit / highlighted) — matches the hero CTA at rest */
+  --primary: #E4E4E7;            /* same light surface as --cta-bg */
+  --primary-foreground: #000000; /* black text, like the hero buttons */
+
+  /* Texte */
+  --text-primary: #FFFFFF;                          /* H1 */
+  --text-body: rgba(255, 255, 255, 0.8);            /* sous-titre */
+  --text-nav: rgba(255, 255, 255, 0.7);             /* liens nav */
+  --text-tertiary: rgba(255, 255, 255, 0.5);        /* "Trusted by" */
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+}

@@ -87,8 +87,6 @@ export function Footer7({
           alt=""
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 h-full w-full object-cover select-none"
-          data-scroll
-          data-scroll-speed="-0.2"
         />
       )}
 

@@ -172,7 +172,7 @@ export default function TestimonialsSection({
                   </div>
                 </div>
 
-                <XLogoIcon className="h-4 w-4 text-[var(--text-tertiary)]" data-scroll data-scroll-speed="-0.5" />
+                <XLogoIcon className="h-4 w-4 text-[var(--text-tertiary)]" />
               </div>
 
               <p className="text-base font-light leading-relaxed text-[var(--text-body)]">

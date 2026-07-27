@@ -23,7 +23,7 @@ export const type = {
 
 /** Card surface used for bento tiles, info cards, and form panels. */
 export const surface = {
-  card: 'rounded-2xl border border-white/10 bg-white/[0.03] p-8',
+  card: 'rounded-2xl border border-white/10 bg-white/[0.04] p-8 shadow-[inset_0_1px_0_0.5px_rgba(255,255,255,0.08),0_1px_2px_-1px_rgba(0,0,0,0.4),0_2px_4px_0_rgba(0,0,0,0.3)] transition-all duration-300 ease-out hover:bg-white/[0.06] hover:border-white/20',
   // Every text field shares h-11 (44px) + inline-flex so Input and Select
   // render at an identical height and baseline.
   field:

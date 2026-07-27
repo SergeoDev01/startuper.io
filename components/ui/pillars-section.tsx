@@ -78,9 +78,9 @@ export default function PillarsSection({
   pillars = defaultPillars,
 }: PillarsSectionProps) {
   return (
-    <section className="w-full bg-[var(--bg-secondary)] px-6 py-20 font-sans text-[var(--text-primary)] md:px-12 md:py-24">
+    <section className="w-full bg-black px-6 py-20 font-sans text-[var(--text-primary)] md:px-12 md:py-24">
       <div className="mx-auto flex max-w-7xl flex-col items-center">
-        <span className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-[var(--text-tertiary)]">
+        <span className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#D97B29]">
           {eyebrow}
         </span>
         <h1 className="mb-12 max-w-3xl text-center text-3xl leading-[0.98] font-medium tracking-tight md:text-5xl">
@@ -94,14 +94,14 @@ export default function PillarsSection({
             return (
               <Card
                 key={index}
-                className={`rounded-lg ring-0 bg-white/[0.04] transition-all duration-300 hover:bg-white/[0.06] hover:shadow-[0_10px_30px_rgba(0,0,0,0.4)] ${
+                className={`rounded-2xl border border-white/10 bg-white/[0.04] transition-all duration-300 hover:bg-white/[0.06] hover:border-white/20 hover:shadow-[0_10px_30px_rgba(0,0,0,0.4)] ${
                   isTall ? 'md:row-span-2 flex flex-col justify-between' : ''
                 }`}
               >
                 <CardContent
                   className={isTall ? 'flex h-full flex-col p-6' : 'p-6'}
                 >
-                  <div className="mb-4 inline-flex size-11 items-center justify-center rounded-md bg-white/[0.06] shadow-[0_1px_2px_rgba(0,0,0,0.25)]">
+                  <div className="mb-4 inline-flex size-11 items-center justify-center rounded-xl border border-white/10 bg-[#ff4f13]/[0.33] shadow-[0_1px_2px_rgba(0,0,0,0.25)]">
                     <Icon className={`h-5 w-5 ${pillar.iconColor}`} />
                   </div>
                   <h3 className="mb-1 text-lg font-medium">{pillar.title}</h3>
@@ -113,7 +113,7 @@ export default function PillarsSection({
                       {pillar.stats.map((stat) => (
                         <div
                           key={stat.label}
-                          className="flex items-center justify-between rounded-md bg-white/[0.06] px-3 py-2 text-xs"
+                          className="flex items-center justify-between rounded-md border border-white/10 bg-white/[0.04] px-3 py-2 text-xs"
                         >
                           <span className="text-[var(--text-tertiary)]">
                             {stat.label}
@@ -125,8 +125,8 @@ export default function PillarsSection({
                       ))}
                     </div>
                   )}
-                  <div className="mt-auto inline-flex size-fit rounded-lg bg-white/[0.06] p-0.5">
-                    <div className="inline-flex items-center rounded-md bg-white/[0.1] px-2 py-1 text-[10px] font-medium text-[var(--text-body)] shadow-[0_1px_2px_rgba(0,0,0,0.25)]">
+                  <div className="mt-auto inline-flex size-fit rounded-md border border-white/10 bg-white/[0.04] p-0.5">
+                    <div className="inline-flex items-center rounded bg-white/[0.08] px-2.5 py-1 text-[10px] font-medium text-[var(--text-body)] shadow-[0_1px_2px_rgba(0,0,0,0.25)]">
                       {pillar.tag}
                     </div>
                   </div>

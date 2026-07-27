@@ -1,4 +1,5 @@
 import { Check, X } from 'lucide-react';
+import { Card } from '@/components/ui/card';
 
 interface WhoItsForSectionProps {
   eyebrow?: string;
@@ -41,7 +42,7 @@ export default function WhoItsForSection({
 
         <div className="mt-16 grid grid-cols-1 gap-4 md:grid-cols-2">
           {/* Fit column */}
-          <div className="flex flex-col gap-4 rounded-lg border border-white/10 bg-white/[0.03] p-8">
+          <Card className="flex flex-col gap-4 p-8">
             <span className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--text-tertiary)]">
               It’s a fit
             </span>
@@ -55,10 +56,10 @@ export default function WhoItsForSection({
                 </li>
               ))}
             </ul>
-          </div>
+          </Card>
 
           {/* Not-fit column */}
-          <div className="flex flex-col gap-4 rounded-lg border border-white/10 bg-white/[0.03] p-8">
+          <Card className="flex flex-col gap-4 p-8">
             <span className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--text-tertiary)]">
               Not a fit (yet)
             </span>
@@ -72,7 +73,7 @@ export default function WhoItsForSection({
                 </li>
               ))}
             </ul>
-          </div>
+          </Card>
         </div>
       </div>
     </section>

@@ -69,17 +69,17 @@ export function Footer7({
               </h2>
             </div>
             <form
-              className="flex w-full max-w-sm shrink-0 items-center gap-2"
+              className="flex w-full max-w-md lg:w-[440px] shrink-0 items-center gap-0"
               onSubmit={(e) => e.preventDefault()}
             >
               <Input
                 type="email"
                 placeholder={inputPlaceholder}
-                className="border-white/15 bg-white/10 h-12 min-h-12 flex-1 rounded-l-md border px-4 text-sm text-white placeholder:text-white/70 focus-visible:border-orange-600/50 focus-visible:ring-orange-600/30"
+                className="border-white/15 bg-white/10 h-12 min-h-12 flex-1 rounded-l-md rounded-r-none border px-4 text-sm text-white placeholder:text-white/70 focus-visible:border-orange-600/50 focus-visible:ring-orange-600/30"
               />
               <Button
                 type="submit"
-                className="text-primary-foreground group flex h-12 shrink-0 cursor-pointer items-center gap-2 rounded-r-md bg-[#FF4202] px-5 font-semibold shadow-[inset_0_0_8px_0.5px_rgba(255,255,255,0.3)] transition-all"
+                className="text-primary-foreground group flex h-12 shrink-0 cursor-pointer items-center gap-2 rounded-r-md rounded-l-none bg-[#FF4202] px-5 font-semibold shadow-[inset_0_0_8px_0.5px_rgba(255,255,255,0.3)] transition-all"
               >
                 <span>{buttonText}</span>
                 {buttonIcon && (

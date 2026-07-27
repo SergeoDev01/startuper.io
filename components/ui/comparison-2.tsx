@@ -58,7 +58,7 @@ export default function ComparisonBlock() {
     <section className="flex w-full items-center justify-center bg-[var(--bg-secondary)] px-6 py-24 text-[var(--text-primary)]">
       <div className="mx-auto w-full max-w-5xl">
         <div className="mb-16 text-center max-w-2xl mx-auto">
-          <Badge variant="outline" className="mb-4">
+          <Badge variant="outline" className="mb-4 border-[#ff4f13]/30 text-[#ff4f13]">
             <RiShieldCheckLine data-icon="inline-start" />
             Who it’s for
           </Badge>

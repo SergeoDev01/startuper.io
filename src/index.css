@@ -2,6 +2,131 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes hero-shader {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  33% {
+    transform: scale(1.25) rotate(2deg);
+  }
+  66% {
+    transform: scale(1.12) rotate(-1.5deg);
+  }
+}
+
+.animate-hero-shader {
+  animation: hero-shader 18s ease-in-out infinite;
+}
+
+@font-face {
+  font-family: 'Halvers';
+  src: url('./assets/fonts/halvers/Halvers-Thin-BF6a48dec23d7b6.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Halvers';
+  src: url('./assets/fonts/halvers/Halvers-ThinItalic-BF6a48dec235266.ttf') format('truetype');
+  font-weight: 100;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Halvers';
+  src: url('./assets/fonts/halvers/Halvers-ExtraLight-BF6a48dec24342f.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Halvers';
+  src: url('./assets/fonts/halvers/Halvers-ExtraLightItalic-BF6a48dec23d724.ttf') format('truetype');
+  font-weight: 200;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Halvers';
+  src: url('./assets/fonts/halvers/Halvers-Light-BF6a48dec243723.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Halvers';
+  src: url('./assets/fonts/halvers/Halvers-LightItalic-BF6a48dec242f6e.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Halvers';
+  src: url('./assets/fonts/halvers/Halvers-Regular-BF6a48dec23d779.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Halvers';
+  src: url('./assets/fonts/halvers/Halvers-Italic-BF6a48dec242f9b.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Halvers';
+  src: url('./assets/fonts/halvers/Halvers-Medium-BF6a48dec2432c6.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Halvers';
+  src: url('./assets/fonts/halvers/Halvers-MediumItalic-BF6a48dec23d8d9.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Halvers';
+  src: url('./assets/fonts/halvers/Halvers-SemiBold-BF6a48dec242475.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Halvers';
+  src: url('./assets/fonts/halvers/Halvers-SemiBoldItalic-BF6a48dec2399ed.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Halvers';
+  src: url('./assets/fonts/halvers/Halvers-Bold-BF6a48dec2373bc.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Halvers';
+  src: url('./assets/fonts/halvers/Halvers-BoldItalic-BF6a48dec2346a3.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Halvers';
+  src: url('./assets/fonts/halvers/Halvers-ExtraBold-BF6a48dec242f6e.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Halvers';
+  src: url('./assets/fonts/halvers/Halvers-ExtraBoldItalic-BF6a48dec2393e7.ttf') format('truetype');
+  font-weight: 800;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Halvers';
+  src: url('./assets/fonts/halvers/Halvers-Black-BF6a48dec0964b9.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Halvers';
+  src: url('./assets/fonts/halvers/Halvers-BlackItalic-BF6a48dec211a0e.ttf') format('truetype');
+  font-weight: 900;
+  font-style: italic;
+}
+
 :root {
   /* Référence carte : w=500, h=370, radius=16px (1rem). min(w,h) = 370px.
      Ratio de référence calculé = 16 / 370 = 0.04324 (4.32%) */

@@ -36,10 +36,10 @@ export default function ProblemSection({
         </div>
 
         {/* 3 mini-stats inline, evenly centered */}
-        <div className="mt-16 grid grid-cols-1 gap-8 border-t border-white/10 pt-12 text-center sm:grid-cols-3 sm:gap-0 sm:divide-x sm:divide-white/10">
+        <div className="mt-16 grid grid-cols-1 gap-8 border-y border-white/10 py-12 text-center sm:grid-cols-3 sm:gap-0 sm:divide-x sm:divide-white/10">
           {stats.map((stat) => (
             <div key={stat.label} className="flex flex-col items-center gap-2 sm:px-6">
-              <span className="text-4xl font-semibold tracking-tight text-[var(--text-primary)] md:text-5xl">
+              <span className="bg-gradient-to-b from-[#FF4202] to-[#ff4f13] bg-clip-text text-4xl font-semibold tracking-tight text-transparent md:text-5xl">
                 {stat.value}
               </span>
               <span className="text-sm font-medium text-[var(--text-tertiary)]">
@@ -50,7 +50,7 @@ export default function ProblemSection({
         </div>
 
         {/* CTA — matches hero button at rest (zinc-200, black text, inset shadow) */}
-        <div className="mt-16">
+        <div className="mt-16 flex justify-center">
           <button className="group flex h-12 items-center gap-2 rounded-md bg-[#FF4202] px-6 text-sm font-semibold text-white shadow-[inset_0_0_8px_0.5px_rgba(255,255,255,0.3)] transition-transform active:scale-[0.96]">
             {ctaText}
             <span className="transition-transform group-hover:translate-x-1">→</span>

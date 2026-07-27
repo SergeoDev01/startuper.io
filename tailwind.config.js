@@ -26,8 +26,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        serif: ['Georgia', 'serif'],
+        sans: ['Halvers', 'Inter', 'system-ui', 'sans-serif'],
+        serif: ['Halvers', 'Georgia', 'serif'],
       },
     },
   },

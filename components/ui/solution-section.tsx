@@ -50,7 +50,7 @@ export default function SolutionSection({
     <section ref={containerRef} className="relative w-full bg-[var(--bg-secondary)] px-6 py-20 font-sans text-[var(--text-primary)] md:px-12 md:py-24">
       <div className="mx-auto max-w-7xl">
         <div className="flex max-w-[42rem] flex-col gap-4">
-          <span className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--text-tertiary)]">
+          <span className="text-sm font-semibold uppercase tracking-[0.2em] text-[#D97B29]">
             {eyebrow}
           </span>
           <h2 className="text-3xl font-medium leading-tight tracking-tight md:text-4xl">

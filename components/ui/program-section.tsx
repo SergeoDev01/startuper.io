@@ -1,3 +1,5 @@
+import { useScrollReveal } from '@/lib/animations';
+
 interface ProgramSectionProps {
   eyebrow?: string;
   title?: string;
@@ -13,26 +15,29 @@ export default function ProgramSection({
   ctaText = 'Apply now',
   note = 'No pricing tiers. No self-serve plan. By design.',
 }: ProgramSectionProps) {
+  const sectionRef = useScrollReveal<HTMLElement>('[data-anim]', { preset: 'fadeUp', stagger: 120 });
+
   return (
-    <section className="w-full bg-[var(--bg-primary)] px-6 py-24 font-sans text-[var(--text-primary)] md:px-12 md:py-32">
+    <section ref={sectionRef} data-scroll className="w-full bg-[var(--bg-primary)] px-6 py-24 font-sans text-[var(--text-primary)] md:px-12 md:py-32">
       <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 text-center">
-        <span className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--text-tertiary)]">
+        <span data-anim className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--text-tertiary)]">
           {eyebrow}
         </span>
-        <h2 className="text-4xl font-medium leading-tight tracking-tight md:text-5xl">
+        <h2 data-anim className="text-4xl font-medium leading-tight tracking-tight md:text-5xl text-wrap balance">
           {title}
         </h2>
-        <p className="text-lg leading-relaxed font-light text-[var(--text-body)] md:text-xl">
+        <p data-anim className="text-lg leading-relaxed font-light text-[var(--text-body)] md:text-xl">
           {paragraph}
         </p>
 
-        {/* Single centered CTA — matches hero button at rest */}
-        <button className="group mt-4 flex h-14 items-center gap-3 rounded-md bg-[#FF4202] px-8 text-base font-semibold text-white shadow-[inset_0_0_8px_0.5px_rgba(255,255,255,0.3)] transition-transform active:scale-[0.96]">
-          {ctaText}
-          <span className="transition-transform group-hover:translate-x-1">→</span>
-        </button>
+        <div data-anim>
+          <button className="group mt-4 flex h-14 items-center gap-3 rounded-md bg-[#FF4202] px-8 text-base font-semibold text-white shadow-[inset_0_0_8px_0.5px_rgba(255,255,255,0.3)] transition-transform active:scale-[0.96]">
+            {ctaText}
+            <span className="transition-transform group-hover:translate-x-1">→</span>
+          </button>
+        </div>
 
-        <span className="text-sm font-light text-[var(--text-tertiary)]">{note}</span>
+        <span data-anim className="text-sm font-light text-[var(--text-tertiary)]">{note}</span>
       </div>
     </section>
   );

@@ -1,3 +1,5 @@
+import { useScrollReveal } from '@/lib/animations';
+
 interface ProblemSectionProps {
   eyebrow?: string;
   title?: string;
@@ -19,24 +21,24 @@ export default function ProblemSection({
   stats = defaultStats,
   ctaText = 'See how it works',
 }: ProblemSectionProps) {
+  const sectionRef = useScrollReveal<HTMLElement>('[data-anim]', { preset: 'fadeUp', stagger: 120 });
+
   return (
-    <section className="w-full bg-[var(--bg-primary)] px-6 py-24 font-sans text-[var(--text-primary)] md:px-12 md:py-32">
+    <section ref={sectionRef} data-scroll className="w-full bg-[var(--bg-primary)] px-6 py-24 font-sans text-[var(--text-primary)] md:px-12 md:py-32">
       <div className="mx-auto max-w-7xl">
-        {/* Asymmetric layout: text block left, stats row below */}
         <div className="flex flex-col gap-6 md:max-w-[42rem]">
-          <span className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--text-tertiary)]">
+          <span data-anim className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--text-tertiary)]">
             {eyebrow}
           </span>
-          <h2 className="text-4xl font-medium leading-tight tracking-tight md:text-5xl">
+          <h2 data-anim className="text-4xl font-medium leading-tight tracking-tight md:text-5xl text-wrap balance">
             {title}
           </h2>
-          <p className="text-lg leading-relaxed font-light text-[var(--text-body)] md:text-xl">
+          <p data-anim className="text-lg leading-relaxed font-light text-[var(--text-body)] md:text-xl">
             {paragraph}
           </p>
         </div>
 
-        {/* 3 mini-stats inline, evenly centered */}
-        <div className="mt-16 grid grid-cols-1 gap-8 border-y border-white/10 py-12 text-center sm:grid-cols-3 sm:gap-0 sm:divide-x sm:divide-white/10">
+        <div data-anim className="mt-16 grid grid-cols-1 gap-8 border-y border-white/10 py-12 text-center sm:grid-cols-3 sm:gap-0 sm:divide-x sm:divide-white/10">
           {stats.map((stat) => (
             <div key={stat.label} className="flex flex-col items-center gap-2 sm:px-6">
               <span className="bg-gradient-to-b from-[#FF4202] to-[#ff4f13] bg-clip-text text-4xl font-semibold tracking-tight text-transparent md:text-5xl">
@@ -49,8 +51,7 @@ export default function ProblemSection({
           ))}
         </div>
 
-        {/* CTA — matches hero button at rest (zinc-200, black text, inset shadow) */}
-        <div className="mt-16 flex justify-center">
+        <div data-anim className="mt-16 flex justify-center">
           <button className="group flex h-12 items-center gap-2 rounded-md bg-[#FF4202] px-6 text-sm font-semibold text-white shadow-[inset_0_0_8px_0.5px_rgba(255,255,255,0.3)] transition-transform active:scale-[0.96]">
             {ctaText}
             <span className="transition-transform group-hover:translate-x-1">→</span>

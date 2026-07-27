@@ -11,14 +11,19 @@ import ProgramSection from './program-section';
 import FaqSection from './faq-section';
 import FinalCtaSection from './final-cta-section';
 import LogoIcon from '@/assets/logo-icon';
+import ScrollProgress from '@/components/ScrollProgress';
+import { useLocomotiveScroll } from '@/lib/useLocomotiveScroll';
 
 export function Contact3Demo() {
   return <ProjectInquirySection />;
 }
 
 export default function Demo() {
+  const { containerRef } = useLocomotiveScroll();
+
   return (
-    <div className="w-full">
+    <div ref={containerRef} className="w-full">
+      <ScrollProgress />
       <NavigationSection />
       <Hero31
         title="Innovation that Drives Impact."

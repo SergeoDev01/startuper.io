@@ -1,3 +1,4 @@
+import { useScrollReveal } from '@/lib/animations';
 import { Card, CardContent } from '@/components/base-ui/card';
 import {
   HiCubeTransparent,
@@ -77,13 +78,15 @@ export default function PillarsSection({
   title = 'Four foundations that keep momentum alive.',
   pillars = defaultPillars,
 }: PillarsSectionProps) {
+  const sectionRef = useScrollReveal<HTMLElement>('[data-anim]', { preset: 'staggerCards', stagger: 120 });
+
   return (
-    <section className="w-full bg-black px-6 py-20 font-sans text-[var(--text-primary)] md:px-12 md:py-24">
+    <section ref={sectionRef} data-scroll className="w-full bg-black px-6 py-20 font-sans text-[var(--text-primary)] md:px-12 md:py-24">
       <div className="mx-auto flex max-w-7xl flex-col items-center">
-        <span className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#D97B29]">
+        <span data-anim className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#D97B29]">
           {eyebrow}
         </span>
-        <h1 className="mb-12 max-w-3xl text-center text-3xl leading-[0.98] font-medium tracking-tight md:text-5xl">
+        <h1 data-anim className="mb-12 max-w-3xl text-center text-3xl leading-[0.98] font-medium tracking-tight md:text-5xl text-wrap balance">
           {title}
         </h1>
 
@@ -94,7 +97,8 @@ export default function PillarsSection({
             return (
               <Card
                 key={index}
-                className={`rounded-2xl border border-white/10 bg-white/[0.04] transition-all duration-300 hover:bg-white/[0.06] hover:border-white/20 hover:shadow-[0_10px_30px_rgba(0,0,0,0.4)] ${
+                data-anim
+                className={`rounded-2xl border border-white/10 bg-white/[0.04] transition-[background-color,border-color,box-shadow] duration-300 hover:bg-white/[0.06] hover:border-white/20 hover:shadow-[0_10px_30px_rgba(0,0,0,0.4)] ${
                   isTall ? 'md:row-span-2 flex flex-col justify-between' : ''
                 }`}
               >

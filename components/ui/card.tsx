@@ -30,14 +30,14 @@ const Card = React.forwardRef<
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       className={cn(
-        "relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] text-card-foreground shadow-[inset_0_1px_0_0.5px_rgba(255,255,255,0.08),0_1px_2px_-1px_rgba(0,0,0,0.4),0_2px_4px_0_rgba(0,0,0,0.3)] transition-all duration-300 ease-out hover:bg-white/[0.06]",
+        "relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] text-card-foreground shadow-[inset_0_1px_0_0.5px_rgba(255,255,255,0.08),0_1px_2px_-1px_rgba(0,0,0,0.4),0_2px_4px_0_rgba(0,0,0,0.3)] transition-[background-color,opacity] duration-300 ease-out hover:bg-white/[0.06]",
         className,
       )}
       {...props}
     >
       {/* Spotlight glow following mouse */}
       <div
-        className="pointer-events-none absolute -inset-px transition duration-300 z-0"
+        className="pointer-events-none absolute -inset-px transition-opacity duration-300 z-0"
         style={{
           opacity,
           background: `radial-gradient(400px circle at ${position.x}px ${position.y}px, rgba(255, 66, 2, 0.18), transparent 70%)`,
@@ -45,7 +45,7 @@ const Card = React.forwardRef<
       />
       {/* Spotlight border glow following mouse */}
       <div
-        className="pointer-events-none absolute inset-0 rounded-2xl border border-[#FF4202] transition duration-300 z-10"
+        className="pointer-events-none absolute inset-0 rounded-2xl border border-[#FF4202] transition-opacity duration-300 z-10"
         style={{
           opacity,
           maskImage: `radial-gradient(220px circle at ${position.x}px ${position.y}px, black, transparent)`,

@@ -1,3 +1,5 @@
+import { useScrollReveal } from '@/lib/animations';
+
 import {
   RiCheckLine,
   RiCloseLine,
@@ -54,15 +56,17 @@ function CrossRow({ text }: { text: string }) {
 }
 
 export default function ComparisonBlock() {
+  const sectionRef = useScrollReveal<HTMLElement>('[data-anim]', { preset: 'staggerCards', stagger: 150 });
+
   return (
-    <section className="flex w-full items-center justify-center bg-[var(--bg-secondary)] px-6 py-24 text-[var(--text-primary)]">
+    <section ref={sectionRef} data-scroll className="flex w-full items-center justify-center bg-[var(--bg-secondary)] px-6 py-24 text-[var(--text-primary)]">
       <div className="mx-auto w-full max-w-5xl">
         <div className="mb-16 text-center max-w-2xl mx-auto">
           <Badge variant="outline" className="mb-4 border-[#ff4f13]/30 text-[#ff4f13]">
             <RiShieldCheckLine data-icon="inline-start" />
             Who it’s for
           </Badge>
-          <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-5xl text-wrap balance">
             Built for teams that move in loops, not in lines.
           </h2>
           <p className="mt-4 text-base text-muted-foreground">
@@ -71,7 +75,7 @@ export default function ComparisonBlock() {
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 items-stretch">
-          <Card className="border-primary/30 ring-primary/25 flex flex-col justify-between bg-card">
+          <Card data-anim className="border-primary/30 ring-primary/25 flex flex-col justify-between bg-card">
             <CardHeader>
               <div className="flex items-center justify-between">
                 <CardTitle className="text-lg font-semibold">It’s a fit</CardTitle>
@@ -102,7 +106,7 @@ export default function ComparisonBlock() {
             </CardFooter>
           </Card>
 
-          <Card className="border border-white/10 bg-white/[0.03] flex flex-col justify-between">
+          <Card data-anim className="border border-white/10 bg-white/[0.03] flex flex-col justify-between">
             <CardHeader>
               <CardTitle className="text-lg font-semibold text-muted-foreground">
                 Not a fit (yet)

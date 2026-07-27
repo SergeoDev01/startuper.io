@@ -1,4 +1,5 @@
-import { type ReactNode } from 'react';
+import { type ReactNode, useRef, useEffect } from 'react';
+import { animate, stagger } from 'animejs';
 import { Button } from '@/components/base-ui/button';
 import { Input } from '@/components/base-ui/input';
 
@@ -38,20 +39,62 @@ export function Footer7({
   linkGroups = [],
   brandWatermark,
 }: Footer7Props) {
+  const footerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const el = footerRef.current;
+    if (!el) return;
+    const targets = el.querySelectorAll('[data-anim]');
+    if (!targets.length) return;
+
+    targets.forEach((child) => {
+      const c = child as HTMLElement;
+      c.style.opacity = '0';
+      c.style.transform = 'translateY(24px)';
+    });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          animate(
+            el.querySelectorAll('[data-anim]'),
+            {
+              opacity: [0, 1],
+              translateY: [24, 0],
+              delay: stagger(80),
+              duration: 700,
+              ease: 'cubicBezier(0.16, 1, 0.3, 1)',
+            } as never,
+          );
+
+          observer.disconnect();
+        });
+      },
+      { threshold: 0.08 },
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <footer className="relative w-full overflow-hidden ">
+    <footer ref={footerRef} className="relative w-full overflow-hidden ">
       {backgroundImage && (
         <img
           src={backgroundImage}
           alt=""
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 h-full w-full object-cover select-none"
+          data-scroll
+          data-scroll-speed="-0.2"
         />
       )}
 
       <div className="relative z-10">
         <div className="mx-auto max-w-7xl px-6 sm:px-12">
-          <div className="flex flex-col gap-8 pt-6 pb-10 lg:flex-row lg:items-end lg:justify-between lg:pt-10 lg:pb-14">
+          <div data-anim className="flex flex-col gap-8 pt-6 pb-10 lg:flex-row lg:items-end lg:justify-between lg:pt-10 lg:pb-14">
             <div className="flex max-w-xl flex-col gap-5">
               {badgeText && (
                 <div className="flex items-center gap-2.5">
@@ -79,7 +122,7 @@ export function Footer7({
               />
               <Button
                 type="submit"
-                className="text-primary-foreground group flex h-12 shrink-0 cursor-pointer items-center gap-2 rounded-r-md rounded-l-none bg-[#FF4202] px-5 font-semibold shadow-[inset_0_0_8px_0.5px_rgba(255,255,255,0.3)] transition-all"
+                className="text-primary-foreground group flex h-12 shrink-0 cursor-pointer items-center gap-2 rounded-r-md rounded-l-none bg-[#FF4202] px-5 font-semibold shadow-[inset_0_0_8px_0.5px_rgba(255,255,255,0.3)] transition-[background-color,transform]"
               >
                 <span>{buttonText}</span>
                 {buttonIcon && (
@@ -91,7 +134,7 @@ export function Footer7({
             </form>
           </div>
 
-          <div className="flex flex-col gap-10 pb-6 lg:flex-row lg:items-start lg:gap-8">
+          <div data-anim className="flex flex-col gap-10 pb-6 lg:flex-row lg:items-start lg:gap-8">
             <div className="flex flex-1 items-center gap-3 lg:pt-1">
               {logo && (
                 <div className="text-white flex h-6 w-6 shrink-0 items-center justify-center [&>svg]:h-full [&>svg]:w-full">
@@ -130,9 +173,9 @@ export function Footer7({
         </div>
 
         {brandWatermark && (
-          <div className="flex w-full items-center justify-center">
+          <div data-anim className="flex w-full items-center justify-center">
             <svg
-              className="h-auto w-full  transition-colors duration-300 select-none"
+              className="h-auto w-full transition-colors duration-300 select-none"
               viewBox={`0 0 ${Math.max(brandWatermark.length * 90, 400)} 110`}
               preserveAspectRatio="xMidYMid meet"
               aria-label={brandWatermark}

@@ -42,9 +42,9 @@ export default function Hero31({
   backgroundImage = "/hero-bg.webp",
 }: Hero31Props) {
   return (
-    <section className="relative min-h-screen w-full overflow-hidden bg-black font-sans text-white antialiased">
+    <section data-scroll className="relative min-h-screen w-full overflow-hidden bg-black font-sans text-white antialiased">
       {backgroundImage && (
-        <div className="pointer-events-none absolute inset-0 z-0 select-none">
+        <div className="pointer-events-none absolute inset-0 z-0 select-none" data-scroll data-scroll-speed="-0.4">
           <img
             className="absolute inset-0 h-full w-full object-cover opacity-100 ring-1 ring-white/10 animate-hero-shader"
             src={backgroundImage}

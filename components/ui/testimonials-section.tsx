@@ -1,4 +1,5 @@
 import React from 'react';
+import { useScrollReveal } from '@/lib/animations';
 import { Card } from '@/components/base-ui/card';
 import {
   Avatar,
@@ -126,17 +127,19 @@ export default function TestimonialsSection({
   title = 'Teams don’t go back after switching.',
   paragraph = 'Real feedback from people using it every day — not curated quotes.',
 }: TestimonialsSectionProps) {
+  const sectionRef = useScrollReveal<HTMLElement>('[data-anim]', { preset: 'staggerCards', stagger: 100 });
+
   return (
-    <section className="w-full bg-black px-6 py-24 font-sans text-[var(--text-primary)] md:px-12 md:py-32">
+    <section ref={sectionRef} data-scroll className="w-full bg-black px-6 py-24 font-sans text-[var(--text-primary)] md:px-12 md:py-32">
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col gap-6 md:max-w-[42rem]">
-          <span className="text-sm font-semibold uppercase tracking-[0.2em] text-[#D97B29]">
+          <span data-anim className="text-sm font-semibold uppercase tracking-[0.2em] text-[#D97B29]">
             {eyebrow}
           </span>
-          <h2 className="text-4xl font-medium leading-tight tracking-tight md:text-5xl">
+          <h2 data-anim className="text-4xl font-medium leading-tight tracking-tight md:text-5xl text-wrap balance">
             {title}
           </h2>
-          <p className="text-lg leading-relaxed font-light text-[var(--text-body)] md:text-xl">
+          <p data-anim className="text-lg leading-relaxed font-light text-[var(--text-body)] md:text-xl">
             {paragraph}
           </p>
         </div>
@@ -145,7 +148,8 @@ export default function TestimonialsSection({
           {TESTIMONIALS.map((t, idx) => (
             <Card
               key={idx}
-              className="flex flex-col justify-between gap-6 rounded-2xl border border-white/10 bg-white/[0.04] p-8 shadow-[inset_0_1px_0_0.5px_rgba(255,255,255,0.08),0_1px_2px_-1px_rgba(0,0,0,0.4),0_2px_4px_0_rgba(0,0,0,0.3)] transition-all duration-300 ease-out hover:bg-white/[0.06] hover:border-white/20 hover:border-t-[#ff4f13]"
+              data-anim
+              className="flex flex-col justify-between gap-6 rounded-2xl border border-white/10 bg-white/[0.04] p-8 shadow-[inset_0_1px_0_0.5px_rgba(255,255,255,0.08),0_1px_2px_-1px_rgba(0,0,0,0.4),0_2px_4px_0_rgba(0,0,0,0.3)] transition-[background-color,border-color] duration-300 ease-out hover:bg-white/[0.06] hover:border-white/20 hover:border-t-[#ff4f13]"
             >
               <div className="flex items-start justify-between">
                 <div className="flex items-start gap-3">
@@ -168,7 +172,7 @@ export default function TestimonialsSection({
                   </div>
                 </div>
 
-                <XLogoIcon className="h-4 w-4 text-[var(--text-tertiary)]" />
+                <XLogoIcon className="h-4 w-4 text-[var(--text-tertiary)]" data-scroll data-scroll-speed="-0.5" />
               </div>
 
               <p className="text-base font-light leading-relaxed text-[var(--text-body)]">

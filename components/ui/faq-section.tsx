@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
+import { useScrollReveal } from '@/lib/animations';
 import { Plus } from 'lucide-react';
 
 interface FaqItem {
@@ -39,23 +40,25 @@ export default function FaqSection({
 }: FaqSectionProps) {
   const [open, setOpen] = useState<number | null>(null);
 
+  const faqRef = useScrollReveal<HTMLDivElement>('[data-anim]', { preset: 'fadeUp', stagger: 100 });
+
   return (
-    <section className="w-full bg-[var(--bg-secondary)] px-6 py-24 font-sans text-[var(--text-primary)] md:px-12 md:py-32">
+    <section data-scroll className="w-full bg-[var(--bg-secondary)] px-6 py-24 font-sans text-[var(--text-primary)] md:px-12 md:py-32">
       <div className="mx-auto max-w-3xl">
         <div className="flex flex-col gap-6">
           <span className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--text-tertiary)]">
             {eyebrow}
           </span>
-          <h2 className="text-4xl font-medium leading-tight tracking-tight md:text-5xl">
+          <h2 className="text-4xl font-medium leading-tight tracking-tight md:text-5xl text-wrap balance">
             {title}
           </h2>
         </div>
 
-        <div className="mt-12 flex flex-col">
+        <div ref={faqRef} className="mt-12 flex flex-col">
           {items.map((item, i) => {
             const isOpen = open === i;
             return (
-              <div key={item.question} className="border-b border-white/10">
+              <div key={item.question} data-anim className="border-b border-white/10">
                 <button
                   onClick={() => setOpen(isOpen ? null : i)}
                   className="flex w-full items-center justify-between gap-6 py-6 text-left"

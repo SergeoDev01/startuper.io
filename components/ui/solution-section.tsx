@@ -47,13 +47,13 @@ export default function SolutionSection({
   });
 
   return (
-    <section ref={containerRef} className="relative w-full bg-[var(--bg-secondary)] px-6 py-20 font-sans text-[var(--text-primary)] md:px-12 md:py-24">
+    <section ref={containerRef} data-scroll className="relative w-full bg-[var(--bg-secondary)] px-6 py-20 font-sans text-[var(--text-primary)] md:px-12 md:py-24">
       <div className="mx-auto max-w-7xl">
         <div className="flex max-w-[42rem] flex-col gap-4">
           <span className="text-sm font-semibold uppercase tracking-[0.2em] text-[#D97B29]">
             {eyebrow}
           </span>
-          <h2 className="text-3xl font-medium leading-tight tracking-tight md:text-4xl">
+          <h2 className="text-3xl font-medium leading-tight tracking-tight md:text-4xl text-wrap balance">
             {title}
           </h2>
           <p className="text-base font-light leading-relaxed text-[var(--text-body)] md:text-lg">
@@ -99,9 +99,9 @@ export default function SolutionSection({
               <div className="relative aspect-square w-full max-w-[420px]">
                 {/* Persistent glow backdrop */}
                 <div className="pointer-events-none absolute -inset-16 -z-10">
-                  <div className="absolute -inset-px left-0 top-0 h-2/3 w-2/3 rounded-lg opacity-10 blur-xl bg-gradient-to-br from-purple-500 to-indigo-500" />
-                  <div className="absolute -inset-px right-0 top-1/4 h-2/3 w-2/3 rounded-lg opacity-10 blur-xl bg-gradient-to-br from-cyan-500 to-sky-500" />
-                  <div className="absolute -inset-px bottom-0 left-1/4 h-2/3 w-2/3 rounded-lg opacity-10 blur-xl bg-gradient-to-br from-amber-500 to-orange-500" />
+                  <div className="absolute -inset-px left-0 top-0 h-2/3 w-2/3 rounded-lg opacity-10 blur-xl bg-gradient-to-br from-purple-500 to-indigo-500" data-scroll data-scroll-speed="-0.3" />
+                  <div className="absolute -inset-px right-0 top-1/4 h-2/3 w-2/3 rounded-lg opacity-10 blur-xl bg-gradient-to-br from-cyan-500 to-sky-500" data-scroll data-scroll-speed="0.2" />
+                  <div className="absolute -inset-px bottom-0 left-1/4 h-2/3 w-2/3 rounded-lg opacity-10 blur-xl bg-gradient-to-br from-amber-500 to-orange-500" data-scroll data-scroll-speed="-0.15" />
                 </div>
 
                 {steps.map((step, index) => {

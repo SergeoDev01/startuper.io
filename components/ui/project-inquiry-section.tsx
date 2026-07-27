@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useScrollReveal } from '@/lib/animations';
 import { Input } from '@/components/base-ui/input';
 import { Textarea } from '@/components/base-ui/textarea';
 import { Label } from '@/components/base-ui/label';
@@ -61,8 +62,10 @@ export default function ProjectInquirySection({
     onSubmit(formData);
   };
 
+  const formRef = useScrollReveal<HTMLDivElement>('[data-anim]', { preset: 'fadeUp', stagger: 80 });
+
   return (
-    <section className={`${section.base} py-16 md:py-24`}>
+    <section data-scroll className={`${section.base} py-16 md:py-24`}>
       <div className={`${section.container} px-0 md:px-0`}>
         <div className="mb-12 max-w-2xl">
           <span className={type.eyebrow}>Get started</span>
@@ -73,11 +76,11 @@ export default function ProjectInquirySection({
           </p>
         </div>
 
-        <div className="grid gap-12 lg:grid-cols-5 lg:gap-16">
+        <div ref={formRef} className="grid gap-12 lg:grid-cols-5 lg:gap-16">
           <div className="lg:col-span-3">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid gap-6 sm:grid-cols-2">
-                <div className="space-y-2">
+                <div data-anim className="space-y-2">
                   <Label htmlFor="fullName" className="text-sm font-medium">
                     Full Name
                   </Label>
@@ -93,7 +96,7 @@ export default function ProjectInquirySection({
                   </div>
                 </div>
 
-                <div className="space-y-2">
+                <div data-anim className="space-y-2">
                   <Label htmlFor="email" className="text-sm font-medium">
                     Email Address
                   </Label>
@@ -110,7 +113,7 @@ export default function ProjectInquirySection({
                   </div>
                 </div>
 
-                <div className="space-y-2">
+                <div data-anim className="space-y-2">
                   <Label htmlFor="company" className="text-sm font-medium">
                     Company
                   </Label>
@@ -126,7 +129,7 @@ export default function ProjectInquirySection({
                   </div>
                 </div>
 
-                <div className="space-y-2">
+                <div data-anim className="space-y-2">
                   <Label htmlFor="projectType" className="text-sm font-medium">
                     Project Type
                   </Label>
@@ -151,7 +154,7 @@ export default function ProjectInquirySection({
                   </Select>
                 </div>
 
-                <div className="space-y-2">
+                <div data-anim className="space-y-2">
                   <Label htmlFor="budget" className="text-sm font-medium">
                     Budget Range
                   </Label>
@@ -174,7 +177,7 @@ export default function ProjectInquirySection({
                   </Select>
                 </div>
 
-                <div className="space-y-2">
+                <div data-anim className="space-y-2">
                   <Label htmlFor="timeline" className="text-sm font-medium">
                     Expected Start Date
                   </Label>
@@ -190,7 +193,7 @@ export default function ProjectInquirySection({
                   </div>
                 </div>
 
-                <div className="space-y-2">
+                <div data-anim className="space-y-2">
                   <Label htmlFor="teamSize" className="text-sm font-medium">
                     Team Size Required
                   </Label>
@@ -218,7 +221,7 @@ export default function ProjectInquirySection({
                   </div>
                 </div>
 
-                <div className="space-y-2 sm:col-span-2">
+                <div data-anim className="space-y-2 sm:col-span-2">
                   <Label htmlFor="message" className="text-sm font-medium">
                     Project Details
                   </Label>
@@ -235,7 +238,7 @@ export default function ProjectInquirySection({
                 </div>
               </div>
 
-              <button type="submit" className={`${accentButton} w-full sm:w-auto`}>
+              <button data-anim type="submit" className={`${accentButton} w-full sm:w-auto`}>
                 Submit Inquiry
                 <IoArrowForward className="h-4 w-4" />
               </button>
@@ -244,7 +247,7 @@ export default function ProjectInquirySection({
 
           <div className="lg:col-span-2">
             <div className="sticky top-8 space-y-6">
-              <div className={surface.card}>
+              <div className={surface.card} data-anim>
                 <h3 className="text-xl font-medium tracking-tight text-[var(--text-primary)]">
                   Why partner with us?
                 </h3>
@@ -266,7 +269,7 @@ export default function ProjectInquirySection({
                 </ul>
               </div>
 
-              <div className="bg-[#FF4202] text-white relative overflow-hidden rounded-lg p-8 shadow-[inset_0_0_8px_0.5px_rgba(255,255,255,0.3)]">
+              <div data-anim className="bg-[#FF4202] text-white relative overflow-hidden rounded-lg p-8 shadow-[inset_0_0_8px_0.5px_rgba(255,255,255,0.3)]">
                 <div className="bg-white/10 absolute -top-8 -right-8 h-32 w-32 rounded-full" />
                 <div className="bg-white/10 absolute -bottom-8 -left-8 h-24 w-24 rounded-full" />
                 <h3 className="text-xl font-medium tracking-tight">

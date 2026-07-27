@@ -206,10 +206,10 @@ export default function NavigationSection({
 
           {/* Desktop actions */}
           <div className="hidden items-center gap-3 lg:flex">
-            <button className="rounded-md px-3 py-2 text-sm font-medium text-white/70 transition-colors hover:bg-white/10 hover:text-white">
+            <button className="rounded-md px-3 py-2 text-sm font-medium text-white/70 transition-colors hover:bg-white/10 hover:text-white active:scale-[0.96]">
               {signInText}
             </button>
-            <button className="rounded-md bg-[#FF4202] px-4 py-2 text-sm font-semibold text-white shadow-[inset_0_0_8px_0.5px_rgba(255,255,255,0.3)] transition-transform active:scale-[0.97]">
+            <button className="rounded-md bg-[#FF4202] px-4 py-2 text-sm font-semibold text-white shadow-[inset_0_0_8px_0.5px_rgba(255,255,255,0.3)] transition-transform active:scale-[0.96]">
               {getStartedText}
             </button>
           </div>
@@ -278,10 +278,10 @@ export default function NavigationSection({
             </div>
 
             <div className="mt-4 flex flex-col gap-3 border-t border-white/10 pt-4">
-              <button className="w-full justify-center rounded-md border border-white/15 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white/10">
+              <button className="w-full justify-center rounded-md border border-white/15 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white/10 active:scale-[0.96]">
                 {signInText}
               </button>
-              <button className="w-full justify-center rounded-md bg-[#FF4202] px-4 py-2 text-sm font-semibold text-white shadow-[inset_0_0_8px_0.5px_rgba(255,255,255,0.3)]">
+              <button className="w-full justify-center rounded-md bg-[#FF4202] px-4 py-2 text-sm font-semibold text-white shadow-[inset_0_0_8px_0.5px_rgba(255,255,255,0.3)] active:scale-[0.96]">
                 {getStartedText}
               </button>
             </div>

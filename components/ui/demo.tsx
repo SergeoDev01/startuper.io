@@ -19,10 +19,11 @@ export function Contact3Demo() {
 }
 
 export default function Demo() {
-  const { containerRef } = useLocomotiveScroll();
+  const { wrapperRef, contentRef } = useLocomotiveScroll();
 
   return (
-    <div ref={containerRef} className="w-full">
+    <div ref={wrapperRef} className="w-full">
+      <div ref={contentRef}>
       <ScrollProgress />
       <NavigationSection />
       <Hero31
@@ -81,6 +82,7 @@ export default function Demo() {
         ]}
         brandWatermark="Startuper.io"
       />
+    </div>
     </div>
   );
 }

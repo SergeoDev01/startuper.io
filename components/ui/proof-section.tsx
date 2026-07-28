@@ -1,12 +1,14 @@
 import { useScrollReveal } from '@/lib/animations';
 import { FaStar, FaBolt, FaServer, FaRocket } from 'react-icons/fa';
 import { SiVercel, SiProducthunt } from 'react-icons/si';
+import { CountUp } from '@/components/CountUp';
 
 interface Metric {
   icon: typeof FaServer;
   iconColor: string;
   value: string;
   label: string;
+  countUp?: { to: number; suffix?: string; prefix?: string; decimals?: number; stiffness?: number };
 }
 
 interface Endorsement {
@@ -14,6 +16,7 @@ interface Endorsement {
   iconClass: string;
   score: string;
   name: string;
+  countUp?: { to: number; suffix?: string; prefix?: string; decimals?: number; stiffness?: number };
 }
 
 const defaultMetrics: Metric[] = [
@@ -22,18 +25,21 @@ const defaultMetrics: Metric[] = [
     iconColor: 'text-emerald-500',
     value: '99.99%',
     label: 'uptime SLA',
+    countUp: { to: 99.99, suffix: '%', decimals: 2, stiffness: 50 },
   },
   {
     icon: FaRocket,
     iconColor: 'text-blue-500',
     value: '2.4M',
     label: 'deployments',
+    countUp: { to: 2.4, suffix: 'M', decimals: 1, stiffness: 70 },
   },
   {
     icon: FaBolt,
     iconColor: 'text-amber-500',
     value: '<50ms',
     label: 'avg latency',
+    countUp: { to: 50, prefix: '<', suffix: 'ms', stiffness: 90 },
   },
 ];
 
@@ -43,12 +49,14 @@ const defaultEndorsements: Endorsement[] = [
     iconClass: 'text-orange-500',
     score: '#1',
     name: 'Product Hunt',
+    countUp: { to: 1, prefix: '#', stiffness: 100 },
   },
   {
     icon: FaStar,
     iconClass: 'text-amber-400',
     score: '4.8',
     name: 'G2 Reviews',
+    countUp: { to: 4.8, decimals: 1, stiffness: 80 },
   },
   { icon: SiVercel, iconClass: '', score: 'Featured', name: 'Vercel' },
 ];
@@ -96,7 +104,18 @@ export default function ProofSection({
                 className={`relative size-6 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3 ${m.iconColor}`}
               />
               <span className="relative bg-gradient-to-b from-[#FF4202] to-[#ff4f13] bg-clip-text text-2xl font-bold tracking-tight text-transparent transition-[letter-spacing] duration-500 ease-out group-hover:tracking-normal md:text-3xl">
-                {m.value}
+                {m.countUp ? (
+                  <CountUp
+                    to={m.countUp.to}
+                    suffix={m.countUp.suffix}
+                    prefix={m.countUp.prefix}
+                    decimals={m.countUp.decimals ?? 0}
+                    stiffness={m.countUp.stiffness}
+                    damping={18}
+                  />
+                ) : (
+                  m.value
+                )}
               </span>
               <span className="relative text-sm font-medium text-[var(--text-tertiary)]">
                 {m.label}
@@ -112,7 +131,20 @@ export default function ProofSection({
                 <e.icon
                   className={`relative size-4 shrink-0 transition-transform duration-300 ease-out group-hover:scale-110 group-hover:-rotate-6 ${e.iconClass}`}
                 />
-                <span className="font-medium">{e.score}</span>
+                <span className="font-medium">
+                  {e.countUp ? (
+                    <CountUp
+                      to={e.countUp.to}
+                      suffix={e.countUp.suffix}
+                      prefix={e.countUp.prefix}
+                      decimals={e.countUp.decimals ?? 0}
+                      stiffness={e.countUp.stiffness}
+                      damping={18}
+                    />
+                  ) : (
+                    e.score
+                  )}
+                </span>
                 <span>{e.name}</span>
               </div>
               {index < endorsements.length - 1 && (

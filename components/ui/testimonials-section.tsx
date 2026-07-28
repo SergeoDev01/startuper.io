@@ -1,5 +1,6 @@
 import React from 'react';
 import { useScrollReveal } from '@/lib/animations';
+import { CountUp } from '@/components/CountUp';
 import { Card } from '@/components/base-ui/card';
 import {
   Avatar,
@@ -186,11 +187,11 @@ export default function TestimonialsSection({
                 <div className="flex items-center gap-4">
                   <button className="flex items-center gap-1 text-xs font-medium text-[var(--text-tertiary)] transition-colors hover:text-red-400">
                     <Heart className="h-4 w-4" />
-                    <span>{t.likes}</span>
+                    <CountUp to={t.likes} stiffness={70} damping={20} />
                   </button>
                   <button className="flex items-center gap-1 text-xs font-medium text-[var(--text-tertiary)] transition-colors hover:text-green-400">
                     <Repeat2 className="h-4 w-4" />
-                    <span>{t.retweets}</span>
+                    <CountUp to={t.retweets} stiffness={100} damping={22} />
                   </button>
                 </div>
               </div>

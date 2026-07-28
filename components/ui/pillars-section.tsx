@@ -1,4 +1,5 @@
 import { useScrollReveal } from '@/lib/animations';
+import { CountUp } from '@/components/CountUp';
 import { Card, CardContent } from '@/components/base-ui/card';
 import {
   HiCubeTransparent,
@@ -11,6 +12,7 @@ import {
 interface PillarStat {
   label: string;
   value: string;
+  countUp?: { to: number; prefix?: string; suffix?: string; decimals?: number; stiffness?: number };
 }
 
 interface Pillar {
@@ -47,7 +49,7 @@ const defaultPillars: Pillar[] = [
     tall: true,
     stats: [
       { label: 'Handoffs', value: 'Zero loss' },
-      { label: 'Teams', value: '1 → 50+' },
+      { label: 'Teams', value: '1 → 50+', countUp: { to: 50, prefix: '1 → ', suffix: '+', stiffness: 70 } },
       { label: 'Signal', value: 'Real-time' },
     ],
   },
@@ -123,7 +125,18 @@ export default function PillarsSection({
                             {stat.label}
                           </span>
                           <span className="font-medium text-[var(--text-primary)]">
-                            {stat.value}
+                            {stat.countUp ? (
+                              <CountUp
+                                to={stat.countUp.to}
+                                prefix={stat.countUp.prefix}
+                                suffix={stat.countUp.suffix}
+                                decimals={stat.countUp.decimals ?? 0}
+                                stiffness={stat.countUp.stiffness}
+                                damping={18}
+                              />
+                            ) : (
+                              stat.value
+                            )}
                           </span>
                         </div>
                       ))}

@@ -49,7 +49,7 @@ export function CountUp({
   const numChars = intDigits + (decimals > 0 ? 1 + decimals : 0)
 
   return (
-    <span ref={ref} className={`tabular-nums ${className ?? ''}`.trim()} style={{ minWidth: `${numChars}ch` }}>
+    <span ref={ref} className={`tabular-nums inline-block ${className ?? ''}`.trim()} style={{ minWidth: `${numChars}ch` }}>
       {prefix}{formatted}{suffix}
     </span>
   )

@@ -46,7 +46,7 @@ export function CountUp({
   const formatted = displayValue.toFixed(decimals)
 
   return (
-    <span ref={ref} className={className}>
+    <span ref={ref} className={`tabular-nums ${className ?? ''}`.trim()}>
       {prefix}{formatted}{suffix}
     </span>
   )

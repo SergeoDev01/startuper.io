@@ -49,7 +49,7 @@ export default function Demo() {
         inputPlaceholder="Enter your email"
         buttonText="Stay Updated"
         buttonIcon={<FaArrowRight />}
-        backgroundImage="https://assets.watermelon.sh/footer-7-bg.avif"
+        backgroundImage="/footer-bg.avif"
         linkGroups={[
           {
             title: 'COMPANY',

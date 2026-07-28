@@ -1,3 +1,5 @@
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 import { motion, type Variants } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
@@ -41,8 +43,58 @@ export default function Hero31({
   trustedByText = "TRUSTED BY AMBITIOUS TEAMS",
   backgroundImage = "/hero-bg.webp",
 }: Hero31Props) {
+  const svgRef1 = useRef<SVGSVGElement>(null);
+  const svgRef2 = useRef<SVGSVGElement>(null);
+  const svgRef3 = useRef<SVGSVGElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+      tl.fromTo(
+        svgRef1.current,
+        { y: 280, opacity: 0, rotate: -8, filter: "drop-shadow(0px 0px 0px rgba(255,66,2,0))" },
+        { y: 0, opacity: 1, rotate: 0, filter: "drop-shadow(0px 0px 28px rgba(255,66,2,0.45))", duration: 2.0, ease: "expo.out" },
+      )
+        .fromTo(
+          svgRef2.current,
+          { y: 340, opacity: 0, rotate: 6, filter: "drop-shadow(0px 0px 0px rgba(255,66,2,0))" },
+          { y: 0, opacity: 1, rotate: 0, filter: "drop-shadow(0px 0px 28px rgba(255,66,2,0.45))", duration: 2.3, ease: "expo.out" },
+          "-=1.6",
+        )
+        .fromTo(
+          svgRef3.current,
+          { y: 310, opacity: 0, rotate: -5, filter: "drop-shadow(0px 0px 0px rgba(255,66,2,0))" },
+          { y: 0, opacity: 1, rotate: 0, filter: "drop-shadow(0px 0px 28px rgba(255,66,2,0.45))", duration: 2.5, ease: "expo.out" },
+          "-=1.9",
+        );
+
+      const sustained = "+=0.4";
+
+      tl.to(
+        [svgRef1.current, svgRef2.current, svgRef3.current],
+        {
+          filter: "drop-shadow(0px 0px 40px rgba(255,66,2,0.6))",
+          duration: 3,
+          yoyo: true,
+          repeat: -1,
+          ease: "sine.inOut",
+          stagger: 0.6,
+        },
+        sustained,
+      );
+
+      tl.to(svgRef1.current, { rotation: 360, duration: 25, repeat: -1, ease: "none" }, sustained);
+      tl.to(svgRef2.current, { rotation: -360, duration: 15, repeat: -1, ease: "none" }, sustained);
+      tl.to(svgRef3.current, { rotation: 360, duration: 22, repeat: -1, ease: "none" }, sustained);
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section data-scroll className="relative min-h-screen w-full overflow-hidden bg-black font-sans text-white antialiased">
+    <section ref={sectionRef} data-scroll className="relative min-h-screen w-full overflow-hidden bg-black font-sans text-white antialiased">
       {backgroundImage && (
         <div className="pointer-events-none absolute inset-0 z-0 select-none" data-scroll data-scroll-speed="-0.4">
           <img
@@ -52,6 +104,36 @@ export default function Hero31({
           />
         </div>
       )}
+
+      <div className="pointer-events-none absolute inset-0 z-[5]" aria-hidden="true">
+        <svg
+          ref={svgRef1}
+          className="absolute text-white/60 w-20 h-20 sm:w-28 sm:h-28 will-change-transform will-change-opacity"
+          style={{ top: "15%", left: "6%", willChange: "transform, opacity, filter" }}
+          viewBox="0 0 120 120"
+        >
+          <use href="/assets/images/sprite.svg#inview-01" />
+        </svg>
+
+        <svg
+          ref={svgRef2}
+          className="absolute text-white/50 w-16 h-16 sm:w-24 sm:h-24 will-change-transform will-change-opacity"
+          style={{ top: "52%", right: "4%", willChange: "transform, opacity, filter" }}
+          viewBox="0 0 120 120"
+        >
+          <use href="/assets/images/sprite.svg#inview-02" />
+        </svg>
+
+        <svg
+          ref={svgRef3}
+          className="absolute text-white/60 w-24 h-24 sm:w-32 sm:h-32 will-change-transform will-change-opacity"
+          style={{ bottom: "12%", right: "12%", willChange: "transform, opacity, filter" }}
+          viewBox="0 0 120 120"
+        >
+          <use href="/assets/images/sprite.svg#inview-03" />
+        </svg>
+      </div>
+
       <div className="relative z-10 mx-auto flex h-full min-h-screen max-w-7xl flex-col px-6 py-12 md:px-12 md:py-20 justify-between">
         <div />
 
@@ -96,7 +178,7 @@ export default function Hero31({
         </div>
 
         <div className="text-center text-xs text-white/50 pb-6">
-          © {new Date().getFullYear()} Startuper.io. All rights reserved.
+          &copy; {new Date().getFullYear()} Startuper.io. All rights reserved.
         </div>
       </div>
     </section>

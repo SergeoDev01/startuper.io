@@ -42,8 +42,7 @@ export default function ProblemSection({
         <div data-anim className="mt-16 grid grid-cols-1 gap-8 border-y border-white/10 py-12 text-center sm:grid-cols-3 sm:gap-0 sm:divide-x sm:divide-white/10">
           {stats.map((stat) => (
             <div key={stat.label} className="flex flex-col items-center gap-2 sm:px-6">
-              <span className="bg-gradient-to-b from-[#FF4202] to-[#ff4f13] bg-clip-text text-4xl font-semibold tracking-tight text-transparent md:text-5xl">
-                {stat.countUp ? (
+              {stat.countUp ? (
                   <CountUp
                     to={stat.countUp.to}
                     suffix={stat.countUp.suffix}
@@ -51,11 +50,13 @@ export default function ProblemSection({
                     decimals={stat.countUp.decimals ?? 0}
                     stiffness={stat.countUp.stiffness}
                     damping={18}
+                    className="bg-gradient-to-b from-[#FF4202] to-[#ff4f13] bg-clip-text text-4xl font-semibold tracking-tight text-transparent md:text-5xl"
                   />
                 ) : (
-                  stat.value
+                  <span className="bg-gradient-to-b from-[#FF4202] to-[#ff4f13] bg-clip-text text-4xl font-semibold tracking-tight text-transparent md:text-5xl">
+                    {stat.value}
+                  </span>
                 )}
-              </span>
               <span className="text-sm font-medium text-[var(--text-tertiary)]">
                 {stat.label}
               </span>

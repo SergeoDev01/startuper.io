@@ -103,8 +103,7 @@ export default function ProofSection({
               <m.icon
                 className={`relative size-6 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3 ${m.iconColor}`}
               />
-              <span className="relative bg-gradient-to-b from-[#FF4202] to-[#ff4f13] bg-clip-text text-2xl font-bold tracking-tight text-transparent transition-[letter-spacing] duration-500 ease-out group-hover:tracking-normal md:text-3xl">
-                {m.countUp ? (
+              {m.countUp ? (
                   <CountUp
                     to={m.countUp.to}
                     suffix={m.countUp.suffix}
@@ -112,11 +111,13 @@ export default function ProofSection({
                     decimals={m.countUp.decimals ?? 0}
                     stiffness={m.countUp.stiffness}
                     damping={18}
+                    className="bg-gradient-to-b from-[#FF4202] to-[#ff4f13] bg-clip-text text-2xl font-bold tracking-tight text-transparent transition-[letter-spacing] duration-500 ease-out group-hover:tracking-normal md:text-3xl"
                   />
                 ) : (
-                  m.value
+                  <span className="relative bg-gradient-to-b from-[#FF4202] to-[#ff4f13] bg-clip-text text-2xl font-bold tracking-tight text-transparent transition-[letter-spacing] duration-500 ease-out group-hover:tracking-normal md:text-3xl">
+                    {m.value}
+                  </span>
                 )}
-              </span>
               <span className="relative text-sm font-medium text-[var(--text-tertiary)]">
                 {m.label}
               </span>

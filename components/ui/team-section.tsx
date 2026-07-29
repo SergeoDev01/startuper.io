@@ -1,23 +1,17 @@
 import { Facebook, Instagram, Twitter } from 'lucide-react';
 import { Badge } from '@/components/base-ui/badge';
+import { useTranslation } from '@/lib/i18n';
 
-export interface SocialLink {
+interface SocialLink {
   platform: 'instagram' | 'facebook' | 'twitter';
   url: string;
 }
 
-export interface TeamMember {
+interface TeamMember {
   name: string;
   role: string;
   avatar: string;
   socials?: SocialLink[];
-}
-
-export interface Team4Props {
-  badge?: string;
-  heading?: string;
-  description?: string;
-  members?: TeamMember[];
 }
 
 const defaultMembers: TeamMember[] = [
@@ -88,39 +82,30 @@ const defaultMembers: TeamMember[] = [
   },
 ];
 
-export function Team4({
-  badge = 'Together, we innovate',
-  heading = 'Building ideas, shaping futures',
-  description = 'Pushing limits, sharing ideas, and building lasting impact.',
-  members = defaultMembers,
-}: Team4Props) {
+export function Team4() {
+  const { t } = useTranslation();
+
   return (
     <section className="bg-background py-16">
       <div className="container mx-auto px-4 md:px-6">
         <div className="mb-12 flex flex-col items-center text-center md:mb-20">
-          {badge && (
-            <Badge
-              variant="secondary"
-              className="mb-6 rounded-full px-4 py-1.5 text-sm font-normal"
-            >
-              {badge}
-            </Badge>
-          )}
+          <Badge
+            variant="secondary"
+            className="mb-6 rounded-full px-4 py-1.5 text-sm font-normal"
+          >
+            {t("team.eyebrow")}
+          </Badge>
 
-          {heading && (
-            <h2 className="text-foreground mb-4 text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl">
-              {heading}
-            </h2>
-          )}
+          <h2 className="text-foreground mb-4 text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl">
+            {t("team.title")}
+          </h2>
 
-          {description && (
-            <p className="text-muted-foreground max-w-2xl text-base md:text-lg">
-              {description}
-            </p>
-          )}
+          <p className="text-muted-foreground max-w-2xl text-base md:text-lg">
+            {t("team.description")}
+          </p>
         </div>
 
-        {members.filter((m) => m.name === 'Sergeo Limta').map((member, index) => (
+        {defaultMembers.filter((m) => m.name === 'Sergeo Limta').map((member, index) => (
           <div key={index} className="mx-auto mb-16 flex max-w-md flex-col items-center text-center">
             <div className="bg-muted ring-border/50 ring-offset-background relative mb-6 h-52 w-52 overflow-hidden rounded-full ring-2 ring-offset-8 transition-all duration-300 sm:h-56 sm:w-56 md:h-60 md:w-60">
               <img
@@ -168,7 +153,7 @@ export function Team4({
         ))}
 
         <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 lg:gap-6">
-          {members.filter((m) => m.name !== 'Sergeo Limta').map((member, index) => (
+          {defaultMembers.filter((m) => m.name !== 'Sergeo Limta').map((member, index) => (
             <div key={index} className="group flex flex-col items-center">
               <div className="bg-muted ring-border/50 ring-offset-background group-hover:ring-border relative mb-6 h-36 w-36 overflow-hidden rounded-full ring-1 ring-offset-4 transition-all duration-300 sm:h-40 sm:w-40 md:h-44 md:w-44 lg:h-40 lg:w-40 xl:h-44 xl:w-44">
                 <img

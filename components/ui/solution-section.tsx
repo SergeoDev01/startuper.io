@@ -1,41 +1,26 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
+import { useTranslation } from '@/lib/i18n';
 
-interface MethodStep {
-  title: string;
-  content: string;
-}
-
-interface SolutionSectionProps {
-  eyebrow?: string;
-  title?: string;
-  paragraph?: string;
-  steps?: MethodStep[];
-}
-
-const defaultSteps: MethodStep[] = [
-  {
-    title: 'Map the system',
-    content: 'We model your workflow end-to-end, surfacing the handoffs where momentum leaks today — the quiet gaps where vision loses contact with execution.',
-  },
-  {
-    title: 'Wire the loop',
-    content: 'Tools, people, and context snap into one continuous loop. No more context switching between apps, no re-explaining the same decision twice.',
-  },
-  {
-    title: 'Compound impact',
-    content: 'Every cycle builds on the last. Progress becomes visible, measurable, and self-reinforcing — impact compounds instead of resetting each quarter.',
-  },
-];
-
-export default function SolutionSection({
-  eyebrow = 'The method',
-  title = 'A three-phase loop that turns vision into compounding impact.',
-  paragraph = 'We replace fragmented execution with a single, continuous motion — so the work keeps moving long after the kickoff ends.',
-  steps = defaultSteps,
-}: SolutionSectionProps) {
+export default function SolutionSection() {
+  const { t } = useTranslation();
   const [activeIdx, setActiveIdx] = useState(0);
   const activeRef = useRef(0);
+
+  const steps = [
+    {
+      title: t("method.step1.title"),
+      content: t("method.step1.body"),
+    },
+    {
+      title: t("method.step2.title"),
+      content: t("method.step2.body"),
+    },
+    {
+      title: t("method.step3.title"),
+      content: t("method.step3.body"),
+    },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -76,18 +61,17 @@ export default function SolutionSection({
       <div className="mx-auto max-w-7xl">
         <div className="flex max-w-[42rem] flex-col gap-4">
           <span className="text-sm font-semibold uppercase tracking-[0.2em] text-[#D97B29]">
-            {eyebrow}
+            {t("method.eyebrow")}
           </span>
           <h2 className="text-3xl font-medium leading-tight tracking-tight md:text-4xl text-wrap balance">
-            {title}
+            {t("method.title")}
           </h2>
           <p className="text-base font-light leading-relaxed text-[var(--text-body)] md:text-lg">
-            {paragraph}
+            {t("method.paragraph")}
           </p>
         </div>
 
         <div className="mt-12 relative grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-20">
-          {/* Left: trigger list */}
           <div className="pt-[15vh] pb-[55vh]">
             {steps.map((step, index) => {
               const isActive = activeIdx === index;
@@ -122,11 +106,9 @@ export default function SolutionSection({
             })}
           </div>
 
-          {/* Right: sticky reactor */}
           <div className="relative hidden md:block">
             <div className="sticky top-0 flex h-screen items-center justify-center">
               <div className="relative aspect-square w-full max-w-[420px]">
-                {/* Persistent glow backdrop */}
                 <div className="pointer-events-none absolute -inset-16 -z-10">
                   <div className="absolute -inset-px left-0 top-0 h-2/3 w-2/3 rounded-lg opacity-10 blur-xl bg-gradient-to-br from-purple-500 to-indigo-500" data-scroll data-scroll-speed="-0.3" />
                   <div className="absolute -inset-px right-0 top-1/4 h-2/3 w-2/3 rounded-lg opacity-10 blur-xl bg-gradient-to-br from-cyan-500 to-sky-500" data-scroll data-scroll-speed="0.2" />
@@ -153,7 +135,7 @@ export default function SolutionSection({
                       </div>
                       <div className="flex flex-1 flex-col justify-between p-6">
                         <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--text-tertiary)]">
-                          Phase {String(index + 1).padStart(2, '0')}
+                          {t("method.phase")} {String(index + 1).padStart(2, '0')}
                         </span>
                         <div className="flex flex-col gap-2">
                           <span className="text-xl font-medium tracking-tight text-[var(--text-primary)] md:text-2xl">

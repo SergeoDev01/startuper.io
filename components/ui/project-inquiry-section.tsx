@@ -19,6 +19,7 @@ import {
   IoPeople,
   IoArrowForward,
 } from 'react-icons/io5';
+import { useTranslation } from '@/lib/i18n';
 
 export interface ConsultationFormData {
   fullName: string;
@@ -31,17 +32,16 @@ export interface ConsultationFormData {
   message: string;
 }
 
-export interface ProjectInquirySectionProps {
-  onSubmit?: (data: ConsultationFormData) => void;
-}
-
 const defaultOnSubmit = (data: ConsultationFormData) => {
   console.log('Inquiry submitted:', data);
 };
 
 export default function ProjectInquirySection({
   onSubmit = defaultOnSubmit,
-}: ProjectInquirySectionProps) {
+}: {
+  onSubmit?: (data: ConsultationFormData) => void;
+}) {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState<ConsultationFormData>({
     fullName: '',
     email: '',
@@ -68,11 +68,10 @@ export default function ProjectInquirySection({
     <section data-scroll className={`${section.base} py-16 md:py-24`}>
       <div className={`${section.container} px-0 md:px-0`}>
         <div className="mb-12 max-w-2xl">
-          <span className={type.eyebrow}>Get started</span>
-          <h1 className={`${type.h2} mt-3`}>Start Your Project</h1>
+          <span className={type.eyebrow}>{t("contact.eyebrow")}</span>
+          <h1 className={`${type.h2} mt-3`}>{t("contact.title")}</h1>
           <p className={`${type.body} mt-4`}>
-            Tell us about your vision and we will craft a tailored solution for
-            your business.
+            {t("contact.subtitle")}
           </p>
         </div>
 
@@ -82,13 +81,13 @@ export default function ProjectInquirySection({
               <div className="grid gap-6 sm:grid-cols-2">
                 <div data-anim className="space-y-2">
                   <Label htmlFor="fullName" className="text-sm font-medium">
-                    Full Name
+                    {t("contact.fullName")}
                   </Label>
                   <div className={surface.iconField}>
                     <IoPerson className="text-[var(--text-tertiary)] absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
                     <Input
                       id="fullName"
-                      placeholder="Alex Morgan"
+                      placeholder={t("contact.fullNamePlaceholder")}
                       value={formData.fullName}
                       onChange={(e) => updateField('fullName', e.target.value)}
                       className="w-full border-0 bg-transparent pl-10 outline-none"
@@ -98,14 +97,14 @@ export default function ProjectInquirySection({
 
                 <div data-anim className="space-y-2">
                   <Label htmlFor="email" className="text-sm font-medium">
-                    Email Address
+                    {t("contact.email")}
                   </Label>
                   <div className={surface.iconField}>
                     <IoMail className="text-[var(--text-tertiary)] absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
                     <Input
                       id="email"
                       type="email"
-                      placeholder="alex@company.com"
+                      placeholder={t("contact.emailPlaceholder")}
                       value={formData.email}
                       onChange={(e) => updateField('email', e.target.value)}
                       className="w-full border-0 bg-transparent pl-10 outline-none"
@@ -115,13 +114,13 @@ export default function ProjectInquirySection({
 
                 <div data-anim className="space-y-2">
                   <Label htmlFor="company" className="text-sm font-medium">
-                    Company
+                    {t("contact.company")}
                   </Label>
                   <div className={surface.iconField}>
                     <IoBusiness className="text-[var(--text-tertiary)] absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
                     <Input
                       id="company"
-                      placeholder="Acme Inc."
+                      placeholder={t("contact.companyPlaceholder")}
                       value={formData.company}
                       onChange={(e) => updateField('company', e.target.value)}
                       className="w-full border-0 bg-transparent pl-10 outline-none"
@@ -131,7 +130,7 @@ export default function ProjectInquirySection({
 
                 <div data-anim className="space-y-2">
                   <Label htmlFor="projectType" className="text-sm font-medium">
-                    Project Type
+                    {t("contact.projectType")}
                   </Label>
                   <Select
                     value={formData.projectType}
@@ -141,22 +140,20 @@ export default function ProjectInquirySection({
                       id="projectType"
                       className={`${surface.field} cursor-pointer`}
                     >
-                      <SelectValue placeholder="Select a service" />
+                      <SelectValue placeholder={t("contact.projectType")} />
                     </SelectTrigger>
                     <SelectContent className="bg-white/[0.04] backdrop-blur-md">
-                      <SelectItem value="web">Web Application</SelectItem>
-                      <SelectItem value="mobile">Mobile App</SelectItem>
-                      <SelectItem value="design">Brand Design</SelectItem>
-                      <SelectItem value="consulting">
-                        Strategy Consulting
-                      </SelectItem>
+                      <SelectItem value="pre-seed">Pre-seed</SelectItem>
+                      <SelectItem value="seed">Seed</SelectItem>
+                      <SelectItem value="series-a">Series A</SelectItem>
+                      <SelectItem value="idea">Idea / Prototype</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
 
                 <div data-anim className="space-y-2">
                   <Label htmlFor="budget" className="text-sm font-medium">
-                    Budget Range
+                    {t("contact.budget")}
                   </Label>
                   <Select
                     value={formData.budget}
@@ -166,7 +163,7 @@ export default function ProjectInquirySection({
                       id="budget"
                       className={`${surface.field} cursor-pointer`}
                     >
-                      <SelectValue placeholder="Select budget" />
+                      <SelectValue placeholder={t("contact.budget")} />
                     </SelectTrigger>
                     <SelectContent className="bg-white/[0.04] backdrop-blur-md">
                       <SelectItem value="10k">$10k – $25k</SelectItem>
@@ -179,7 +176,7 @@ export default function ProjectInquirySection({
 
                 <div data-anim className="space-y-2">
                   <Label htmlFor="timeline" className="text-sm font-medium">
-                    Expected Start Date
+                    {t("contact.timeline")}
                   </Label>
                   <div className={surface.iconField}>
                     <IoCalendar className="text-[var(--text-tertiary)] absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
@@ -195,7 +192,7 @@ export default function ProjectInquirySection({
 
                 <div data-anim className="space-y-2">
                   <Label htmlFor="teamSize" className="text-sm font-medium">
-                    Team Size Required
+                    {t("contact.teamSize")}
                   </Label>
                   <div className={surface.iconField}>
                     <IoPeople className="text-[var(--text-tertiary)] absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
@@ -207,14 +204,12 @@ export default function ProjectInquirySection({
                         id="teamSize"
                         className={`${surface.field} cursor-pointer pl-10`}
                       >
-                        <SelectValue placeholder="Select team size" />
+                        <SelectValue placeholder={t("contact.teamSize")} />
                       </SelectTrigger>
                       <SelectContent className="bg-white/[0.04] backdrop-blur-md">
-                        <SelectItem value="solo">Solo Contributor</SelectItem>
+                        <SelectItem value="solo">Solo Founder</SelectItem>
                         <SelectItem value="small">Small Team (2–4)</SelectItem>
-                        <SelectItem value="medium">
-                          Medium Team (5–8)
-                        </SelectItem>
+                        <SelectItem value="medium">Medium Team (5–8)</SelectItem>
                         <SelectItem value="large">Large Team (9+)</SelectItem>
                       </SelectContent>
                     </Select>
@@ -223,13 +218,13 @@ export default function ProjectInquirySection({
 
                 <div data-anim className="space-y-2 sm:col-span-2">
                   <Label htmlFor="message" className="text-sm font-medium">
-                    Project Details
+                    {t("contact.message")}
                   </Label>
                   <div className="rounded-md border border-white/10 bg-white/[0.03] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] transition-colors hover:border-[#FF4202]/55 focus-within:border-[#FF4202]">
                     <Textarea
                       id="message"
                       rows={5}
-                      placeholder="Describe your goals, challenges, and any specific requirements..."
+                      placeholder={t("contact.messagePlaceholder")}
                       value={formData.message}
                       onChange={(e) => updateField('message', e.target.value)}
                       className="w-full resize-none border-0 bg-transparent px-3 py-2.5 outline-none"
@@ -239,7 +234,7 @@ export default function ProjectInquirySection({
               </div>
 
               <button data-anim type="submit" className={`${accentButton} w-full sm:w-auto`}>
-                Submit Inquiry
+                {t("contact.submit")}
                 <IoArrowForward className="h-4 w-4" />
               </button>
             </form>
@@ -249,19 +244,16 @@ export default function ProjectInquirySection({
             <div className="sticky top-8 space-y-6">
               <div className={surface.card} data-anim>
                 <h3 className="text-xl font-medium tracking-tight text-[var(--text-primary)]">
-                  Why partner with us?
+                  {t("contact.why")}
                 </h3>
                 <ul className="mt-6 space-y-4">
                   {[
-                    'Dedicated project managers',
-                    'Transparent weekly updates',
-                    'Post-launch support included',
-                    'Source code handover guaranteed',
+                    t("contact.why1"),
+                    t("contact.why2"),
+                    t("contact.why3"),
+                    t("contact.why4"),
                   ].map((item, index) => (
-                    <li
-                      key={index}
-                      className="flex items-start gap-3 text-[var(--text-body)]"
-                    >
+                    <li key={index} className="flex items-start gap-3 text-[var(--text-body)]">
                       <span className="bg-[var(--primary)] mt-2 h-2 w-2 shrink-0 rounded-full" />
                       <span>{item}</span>
                     </li>
@@ -273,12 +265,11 @@ export default function ProjectInquirySection({
                 <div className="bg-white/10 absolute -top-8 -right-8 h-32 w-32 rounded-full" />
                 <div className="bg-white/10 absolute -bottom-8 -left-8 h-24 w-24 rounded-full" />
                 <h3 className="text-xl font-medium tracking-tight">
-                  Response Time
+                  {t("contact.responseTime")}
                 </h3>
-                <p className="mt-4 text-3xl font-bold">Under 4 hours</p>
+                <p className="mt-4 text-3xl font-bold">{t("contact.responseValue")}</p>
                 <p className="mt-4 text-sm opacity-80">
-                  Our team reviews every inquiry personally to ensure we
-                  understand your needs before reaching out.
+                  {t("contact.responseText")}
                 </p>
               </div>
             </div>

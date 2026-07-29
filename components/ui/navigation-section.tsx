@@ -1,73 +1,28 @@
 import { useState } from 'react';
 import LogoIcon from '@/assets/logo-icon';
-import {
-  Cpu,
-  Layers,
-  GitBranch,
-  Terminal,
-  ArrowUpRight,
-  Menu,
-  X,
-} from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
+import { useTranslation, type Locale } from '@/lib/i18n';
 
 interface NavLink {
   label: string;
-  badge?: string;
-}
-
-interface SolutionColumn {
-  heading?: string;
-  links: { label: string; href: string }[];
+  href: string;
 }
 
 const navLinks: NavLink[] = [
-  { label: 'Features' },
-  { label: 'Developers', badge: 'API' },
-  { label: 'Customers' },
-  { label: 'Enterprise' },
+  { label: 'nav.method', href: '#method' },
+  { label: 'nav.testimonials', href: '#testimonials' },
+  { label: 'nav.faq', href: '#faq' },
 ];
 
-const solutionColumns: SolutionColumn[] = [
-  {
-    links: [
-      { label: 'Compute Engine', href: '#' },
-      { label: 'Pipelines', href: '#' },
-      { label: 'Webhooks', href: '#' },
-      { label: 'CLI Tool', href: '#' },
-    ],
-  },
-  {
-    heading: 'Use Cases',
-    links: [
-      { label: 'Fraud Detection', href: '#' },
-      { label: 'Personalized Search', href: '#' },
-      { label: 'Predictive Analytics', href: '#' },
-      { label: 'LLM Gateways', href: '#' },
-    ],
-  },
-  {
-    heading: 'Resources',
-    links: [
-      { label: 'Documentation', href: '#' },
-      { label: 'API Reference', href: '#' },
-      { label: 'System Status', href: '#' },
-    ],
-  },
+const locales: { code: Locale; label: string }[] = [
+  { code: 'en', label: 'EN' },
+  { code: 'fr', label: 'FR' },
 ];
 
-export interface NavigationSectionProps {
-  logoText?: string;
-  signInText?: string;
-  getStartedText?: string;
-}
-
-export default function NavigationSection({
-  logoText = 'Startuper.io',
-  signInText = 'Sign in',
-  getStartedText = 'Get started',
-}: NavigationSectionProps) {
+export default function NavigationSection() {
+  const { t, locale, setLocale } = useTranslation();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [solutionsOpen, setSolutionsOpen] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
 
   return (
     <div className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/40 backdrop-blur-xl backdrop-saturate-150">
@@ -79,7 +34,7 @@ export default function NavigationSection({
               <LogoIcon className="h-6 w-6 text-white" />
             </div>
             <span className="text-lg font-bold tracking-tight text-white">
-              {logoText}
+              {t("nav.logo")}
             </span>
           </div>
 
@@ -88,129 +43,53 @@ export default function NavigationSection({
             {navLinks.map((link) => (
               <a
                 key={link.label}
-                href="#"
+                href={link.href}
                 className="flex items-center gap-2 rounded-md px-3 py-1.5 text-sm font-medium text-white/70 transition-colors hover:bg-white/10 hover:text-white"
               >
-                {link.label}
-                {link.badge && (
-                  <span className="rounded-full bg-white/15 px-2 text-[10px] font-medium text-white">
-                    {link.badge}
-                  </span>
-                )}
+                {t(link.label)}
               </a>
             ))}
-
-            {/* Solutions dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => setSolutionsOpen(true)}
-              onMouseLeave={() => setSolutionsOpen(false)}
-            >
-              <button
-                onClick={() => setSolutionsOpen((v) => !v)}
-                className="flex items-center gap-1 rounded-md px-3 py-1.5 text-sm font-medium text-white/70 transition-colors hover:bg-white/10 hover:text-white"
-              >
-                Solutions
-                <svg
-                  className={`h-3.5 w-3.5 transition-transform duration-200 ${
-                    solutionsOpen ? 'rotate-180' : ''
-                  }`}
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path d="m6 9 6 6 6-6" />
-                </svg>
-              </button>
-
-              {solutionsOpen && (
-                <div className="absolute left-0 top-full w-[640px] pt-3">
-                  <div className="grid grid-cols-4 gap-6 rounded-lg border border-white/10 bg-black/50 p-6 shadow-2xl backdrop-blur-xl backdrop-saturate-150">
-                    {/* Column 1 — featured card */}
-                    <div className="flex flex-col">
-                      <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-md bg-white/10">
-                        <Cpu className="h-5 w-5 text-white/80" />
-                      </div>
-                      <h4 className="mb-1 text-sm font-medium text-white">
-                        Compute Engine
-                      </h4>
-                      <p className="mb-3 text-sm text-white/50">
-                        Train and deploy models with infinite scale
-                        infrastructure.
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        <span className="inline-flex h-7 items-center gap-1.5 rounded-full border border-white/15 px-3 text-xs text-white/80">
-                          <Layers className="h-3.5 w-3.5" />
-                          Pipelines
-                        </span>
-                        <span className="inline-flex h-7 items-center gap-1.5 rounded-full border border-white/15 px-3 text-xs text-white/80">
-                          <GitBranch className="h-3.5 w-3.5" />
-                          Webhooks
-                        </span>
-                        <span className="inline-flex h-7 items-center gap-1.5 rounded-full border border-white/15 px-3 text-xs text-white/80">
-                          <Terminal className="h-3.5 w-3.5" />
-                          CLI Tool
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Columns 2-4 */}
-                    {solutionColumns.slice(1).map((col) => (
-                      <div key={col.heading} className="flex flex-col gap-3">
-                        {col.heading && (
-                          <h4 className="text-xs uppercase tracking-wide text-white/40">
-                            {col.heading}
-                          </h4>
-                        )}
-                        {col.links.map((l) => (
-                          <a
-                            key={l.label}
-                            href={l.href}
-                            className="text-sm font-medium text-white/60 transition-colors hover:text-white"
-                          >
-                            {l.label}
-                          </a>
-                        ))}
-                      </div>
-                    ))}
-
-                    {/* Featured callout */}
-                    <a
-                      href="#"
-                      className="group relative flex flex-col justify-between overflow-hidden rounded-lg border border-white/10 bg-white/5 p-6"
-                    >
-                      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-                      <div>
-                        <span className="mb-3 inline-block rounded-full border border-white/20 px-2 py-0.5 text-[10px] font-medium text-white">
-                          Upcoming Webinar
-                        </span>
-                        <h4 className="mb-2 text-sm font-semibold text-white">
-                          Building scalable AI pipelines
-                        </h4>
-                        <p className="text-sm text-white/60">
-                          Join our engineers for a live teardown of the new
-                          Compute Engine architecture.
-                        </p>
-                      </div>
-                      <div className="mt-4 inline-flex items-center text-sm font-medium text-white">
-                        Register now
-                        <ArrowUpRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                      </div>
-                    </a>
-                  </div>
-                </div>
-              )}
-            </div>
           </nav>
 
           {/* Desktop actions */}
           <div className="hidden items-center gap-3 lg:flex">
+            {/* Language switcher */}
+            <div className="relative">
+              <button
+                onClick={() => setLangOpen((v) => !v)}
+                onMouseEnter={() => setLangOpen(true)}
+                className="flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-sm font-medium text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+              >
+                <Globe className="h-3.5 w-3.5" />
+                <span className="text-xs">{locale === 'en' ? 'EN' : 'FR'}</span>
+              </button>
+              {langOpen && (
+                <div
+                  className="absolute right-0 top-full pt-1"
+                  onMouseLeave={() => setLangOpen(false)}
+                >
+                  <div className="flex flex-col overflow-hidden rounded-lg border border-white/10 bg-black/90 shadow-2xl backdrop-blur-xl">
+                    {locales.map((l) => (
+                      <button
+                        key={l.code}
+                        onClick={() => { setLocale(l.code); setLangOpen(false); }}
+                        className={`px-4 py-2 text-left text-sm transition-colors hover:bg-white/10 ${
+                          locale === l.code ? 'text-white font-medium' : 'text-white/60'
+                        }`}
+                      >
+                        {l.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
             <button className="rounded-md px-3 py-2 text-sm font-medium text-white/70 transition-colors hover:bg-white/10 hover:text-white active:scale-[0.96]">
-              {signInText}
+              {t("nav.signIn")}
             </button>
             <button className="rounded-md bg-[#FF4202] px-4 py-2 text-sm font-semibold text-white shadow-[inset_0_0_8px_0.5px_rgba(255,255,255,0.3)] transition-transform active:scale-[0.96]">
-              {getStartedText}
+              {t("nav.applyNow")}
             </button>
           </div>
         </div>
@@ -232,57 +111,37 @@ export default function NavigationSection({
             {navLinks.map((link) => (
               <a
                 key={link.label}
-                href="#"
+                href={link.href}
+                onClick={() => setMobileOpen(false)}
                 className="flex items-center justify-between rounded-lg px-3 py-2 text-base font-medium text-white/80 transition-colors hover:bg-white/10 hover:text-white"
               >
-                {link.label}
-                {link.badge && (
-                  <span className="rounded-full bg-white/15 px-2 text-[10px] font-medium text-white">
-                    {link.badge}
-                  </span>
-                )}
+                {t(link.label)}
               </a>
             ))}
 
-            <div className="flex flex-col gap-1">
-              <button
-                onClick={() => setSolutionsOpen((v) => !v)}
-                className="flex items-center justify-between rounded-lg px-3 py-2 text-base font-medium text-white/80 transition-colors hover:bg-white/10 hover:text-white"
-              >
-                Solutions
-                <svg
-                  className={`h-4 w-4 transition-transform duration-200 ${
-                    solutionsOpen ? 'rotate-180' : ''
+            {/* Language switcher mobile */}
+            <div className="flex gap-2 px-3 py-2">
+              {locales.map((l) => (
+                <button
+                  key={l.code}
+                  onClick={() => { setLocale(l.code); setMobileOpen(false); }}
+                  className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
+                    locale === l.code
+                      ? 'bg-white/15 text-white'
+                      : 'text-white/60 hover:bg-white/10 hover:text-white'
                   }`}
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
                 >
-                  <path d="m6 9 6 6 6-6" />
-                </svg>
-              </button>
-              {solutionsOpen && (
-                <div className="ml-2 flex flex-col gap-2 border-l border-white/10 pl-4">
-                  {solutionColumns.flatMap((col) => col.links).map((l) => (
-                    <a
-                      key={l.label}
-                      href={l.href}
-                      className="text-sm font-medium text-white/60 transition-colors hover:text-white"
-                    >
-                      {l.label}
-                    </a>
-                  ))}
-                </div>
-              )}
+                  {l.label}
+                </button>
+              ))}
             </div>
 
             <div className="mt-4 flex flex-col gap-3 border-t border-white/10 pt-4">
               <button className="w-full justify-center rounded-md border border-white/15 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white/10 active:scale-[0.96]">
-                {signInText}
+                {t("nav.signIn")}
               </button>
               <button className="w-full justify-center rounded-md bg-[#FF4202] px-4 py-2 text-sm font-semibold text-white shadow-[inset_0_0_8px_0.5px_rgba(255,255,255,0.3)] active:scale-[0.96]">
-                {getStartedText}
+                {t("nav.applyNow")}
               </button>
             </div>
           </div>

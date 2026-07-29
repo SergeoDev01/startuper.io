@@ -2,55 +2,30 @@ import { useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { useScrollReveal } from '@/lib/animations';
 import { Plus } from 'lucide-react';
+import { useTranslation } from '@/lib/i18n';
 
-interface FaqItem {
-  question: string;
-  answer: string;
-}
-
-interface FaqSectionProps {
-  eyebrow?: string;
-  title?: string;
-  items?: FaqItem[];
-}
-
-const defaultItems: FaqItem[] = [
-  {
-    question: 'How is this different from a project tool?',
-    answer: 'It’s not another app to log into. It replaces the gap between your tools with one continuous loop, so context never has to be re-explained.',
-  },
-  {
-    question: 'Do you integrate with our stack?',
-    answer: 'The loop sits on top of what you already run. We model the handoffs, not the software — so there’s nothing to rip out.',
-  },
-  {
-    question: 'How long until we see movement?',
-    answer: 'The first cycle is built with you, usually within the first cohort. Teams report visible signal in weeks, not quarters.',
-  },
-  {
-    question: 'Why application-only?',
-    answer: 'The loop only compounds when it’s run well. Limiting cohorts keeps the work tight and the outcomes real.',
-  },
-];
-
-export default function FaqSection({
-  eyebrow = 'FAQ',
-  title = 'Questions, answered.',
-  items = defaultItems,
-}: FaqSectionProps) {
+export default function FaqSection() {
+  const { t } = useTranslation();
   const [open, setOpen] = useState<number | null>(null);
-
   const faqRef = useScrollReveal<HTMLDivElement>('[data-anim]', { preset: 'fadeUp', stagger: 100 });
+
+  const items = [
+    { question: t("faq.q1"), answer: t("faq.a1") },
+    { question: t("faq.q2"), answer: t("faq.a2") },
+    { question: t("faq.q3"), answer: t("faq.a3") },
+    { question: t("faq.q4"), answer: t("faq.a4") },
+    { question: t("faq.q5"), answer: t("faq.a5") },
+  ];
 
   return (
     <section data-scroll className="w-full bg-[var(--bg-secondary)] px-6 py-24 font-sans text-[var(--text-primary)] md:px-12 md:py-32">
       <div className="mx-auto max-w-3xl">
         <div className="flex flex-col gap-6">
           <span className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--text-tertiary)]">
-            {eyebrow}
+            {t("faq.eyebrow")}
           </span>
           <h2 className="text-4xl font-medium leading-tight tracking-tight md:text-5xl text-wrap balance">
-            {title}
+            {t("faq.title")}
           </h2>
         </div>
 

@@ -2,43 +2,22 @@ import { type ReactNode, useRef, useEffect } from 'react';
 import { animate, stagger } from 'animejs';
 import { Button } from '@/components/base-ui/button';
 import { Input } from '@/components/base-ui/input';
-
-export interface Footer7Link {
-  label: string;
-  href: string;
-}
-
-export interface Footer7LinkGroup {
-  title: string;
-  links: Footer7Link[];
-}
+import { useTranslation } from '@/lib/i18n';
 
 export interface Footer7Props {
   logo?: ReactNode;
   brandName?: string;
-  badgeText?: string;
-  headline?: string;
-  inputPlaceholder?: string;
-  buttonText?: string;
-  buttonIcon?: ReactNode;
   backgroundImage?: string;
-  centerIcon?: ReactNode;
-  linkGroups?: Footer7LinkGroup[];
   brandWatermark?: string;
 }
 
 export function Footer7({
   logo,
   brandName = 'Startuper.io',
-  badgeText = 'Loved by Creators',
-  headline = 'Fresh insights, tutorials, and updates delivered to your inbox.',
-  inputPlaceholder = 'Enter your email',
-  buttonText = 'Stay Updated',
-  buttonIcon,
   backgroundImage,
-  linkGroups = [],
   brandWatermark,
 }: Footer7Props) {
+  const { t } = useTranslation();
   const footerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -79,6 +58,43 @@ export function Footer7({
     return () => observer.disconnect();
   }, []);
 
+  const linkGroups = [
+    {
+      title: t("footer.column1.title"),
+      links: [
+        { label: t("footer.column1.link1"), href: '#' },
+        { label: t("footer.column1.link2"), href: '#' },
+        { label: t("footer.column1.link3"), href: '#' },
+        { label: t("footer.column1.link4"), href: '#' },
+      ],
+    },
+    {
+      title: t("footer.column2.title"),
+      links: [
+        { label: t("footer.column2.link1"), href: '#method' },
+        { label: t("footer.column2.link2"), href: '#' },
+        { label: t("footer.column2.link3"), href: '#' },
+        { label: t("footer.column2.link4"), href: '#' },
+      ],
+    },
+    {
+      title: t("footer.column3.title"),
+      links: [
+        { label: t("footer.column3.link1"), href: '#' },
+        { label: t("footer.column3.link2"), href: '#' },
+        { label: t("footer.column3.link3"), href: '#' },
+      ],
+    },
+    {
+      title: t("footer.column4.title"),
+      links: [
+        { label: t("footer.column4.link1"), href: '#' },
+        { label: t("footer.column4.link2"), href: '#' },
+        { label: t("footer.column4.link3"), href: '#' },
+      ],
+    },
+  ];
+
   return (
     <footer ref={footerRef} className="relative w-full overflow-hidden ">
       {backgroundImage && (
@@ -94,19 +110,17 @@ export function Footer7({
         <div className="mx-auto max-w-7xl px-6 sm:px-12">
           <div data-anim className="flex flex-col gap-8 pt-6 pb-10 lg:flex-row lg:items-end lg:justify-between lg:pt-10 lg:pb-14">
             <div className="flex max-w-xl flex-col gap-5">
-              {badgeText && (
-                <div className="flex items-center gap-2.5">
-                  <span className="relative flex h-2 w-2 shrink-0">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#FF4202] opacity-75" />
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-[#FF4202]" />
-                  </span>
-                  <span className="text-sm font-medium text-white">
-                    {badgeText}
-                  </span>
-                </div>
-              )}
+              <div className="flex items-center gap-2.5">
+                <span className="relative flex h-2 w-2 shrink-0">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#FF4202] opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-[#FF4202]" />
+                </span>
+                <span className="text-sm font-medium text-white">
+                  {t("footer.badge")}
+                </span>
+              </div>
               <h2 className="text-white text-3xl leading-tight font-light tracking-tight sm:text-4xl lg:text-5xl">
-                {headline}
+                {t("footer.headline")}
               </h2>
             </div>
             <form
@@ -115,19 +129,14 @@ export function Footer7({
             >
               <Input
                 type="email"
-                placeholder={inputPlaceholder}
+                placeholder={t("footer.inputPlaceholder")}
                 className="border-white/15 bg-white/10 h-12 min-h-12 flex-1 rounded-l-md rounded-r-none border px-4 text-sm text-white placeholder:text-white/70 focus-visible:border-orange-600/50 focus-visible:ring-orange-600/30"
               />
               <Button
                 type="submit"
                 className="text-primary-foreground group flex h-12 shrink-0 cursor-pointer items-center gap-2 rounded-r-md rounded-l-none bg-[#FF4202] px-5 font-semibold shadow-[inset_0_0_8px_0.5px_rgba(255,255,255,0.3)] transition-[background-color,transform]"
               >
-                <span>{buttonText}</span>
-                {buttonIcon && (
-                  <span className="flex h-4 w-4 items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 [&>svg]:h-full [&>svg]:w-full">
-                    {buttonIcon}
-                  </span>
-                )}
+                <span>{t("footer.buttonText")}</span>
               </Button>
             </form>
           </div>
@@ -145,7 +154,7 @@ export function Footer7({
             </div>
 
             {linkGroups.length > 0 && (
-              <div className="grid grid-cols-2 gap-x-12 gap-y-8 sm:grid-cols-3 lg:gap-x-16">
+              <div className="grid grid-cols-2 gap-x-12 gap-y-8 sm:grid-cols-4 lg:gap-x-16">
                 {linkGroups.map((group, groupIndex) => (
                   <div key={groupIndex} className="flex flex-col gap-4">
                     <span className="text-sm font-medium tracking-wide text-white/90 uppercase">

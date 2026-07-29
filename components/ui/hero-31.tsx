@@ -3,12 +3,9 @@ import { gsap } from "gsap";
 import { motion, type Variants } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
+import { useTranslation } from "@/lib/i18n";
 
 interface Hero31Props {
-  title?: string;
-  subtitle?: string;
-  ctaText?: string;
-  trustedByText?: string;
   backgroundImage?: string;
 }
 
@@ -37,12 +34,9 @@ const itemVariants: Variants = {
 };
 
 export default function Hero31({
-  title = "Innovation that Drives Impact.",
-  subtitle = "Startuper.io empowers teams to build, scale, and transform with technology that drives real results.",
-  ctaText = "Request a Demo",
-  trustedByText = "TRUSTED BY AMBITIOUS TEAMS",
   backgroundImage = "/hero-bg.webp",
 }: Hero31Props) {
+  const { t } = useTranslation();
   const svgRef1 = useRef<SVGSVGElement>(null);
   const svgRef2 = useRef<SVGSVGElement>(null);
   const svgRef3 = useRef<SVGSVGElement>(null);
@@ -146,30 +140,30 @@ export default function Hero31({
             <motion.div variants={itemVariants} className="mb-6">
               <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-medium text-white backdrop-blur-md border border-white/10">
                 <Sparkles className="size-3.5" />
-                {trustedByText}
+                {t("hero.badge")}
               </span>
             </motion.div>
 
             <motion.div variants={itemVariants} className="mb-6">
               <h1 className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl text-wrap balance">
-                {title}
+                {t("hero.title")}
               </h1>
             </motion.div>
 
             <motion.div variants={itemVariants} className="mb-8 max-w-2xl">
               <p className="text-lg text-white/80 font-light leading-relaxed text-wrap pretty">
-                {subtitle}
+                {t("hero.subtitle")}
               </p>
             </motion.div>
 
             <motion.div variants={itemVariants}>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Button size="lg" className="bg-[#FF4202] text-white hover:bg-[#FF4202]/90 w-full sm:w-auto font-semibold shadow-[inset_0_0_8px_0.5px_rgba(255,255,255,0.3)]">
-                  {ctaText}
+                  {t("hero.cta")}
                   <ArrowRight className="ml-2 size-4" />
                 </Button>
                 <Button size="lg" variant="outline" className="border-white/20 bg-white/10 text-white hover:bg-white/20 w-full sm:w-auto">
-                  Explore Documentation
+                  {t("hero.secondaryCta")}
                 </Button>
               </div>
             </motion.div>

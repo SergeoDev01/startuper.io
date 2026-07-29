@@ -6,8 +6,8 @@ import {
   HiSwitchHorizontal,
   HiChartBar,
   HiShieldCheck,
-  HiTrendingUp,
 } from 'react-icons/hi';
+import { useTranslation } from '@/lib/i18n';
 
 interface PillarStat {
   label: string;
@@ -49,51 +49,35 @@ const defaultPillars: Pillar[] = [
     tall: true,
     stats: [
       { label: 'Handoffs', value: 'Zero loss' },
-      { label: 'Teams', value: '1 → 50+', countUp: { to: 50, prefix: '1 → ', suffix: '+', stiffness: 70 } },
+      { label: 'Teams', value: '1 → 50+', countUp: { to: 50, prefix: '1 → ', suffix: '+', stiffness: 70, decimals: 0 } },
       { label: 'Signal', value: 'Real-time' },
     ],
   },
   {
     icon: HiChartBar,
     title: 'Real-time signal',
-    body: 'Progress is visible the moment it happens, not in next quarter’s retro.',
+    body: 'Progress is visible the moment it happens, not in next quarter\'s retro.',
     tag: 'Live signal',
     iconColor: 'text-pink-500',
   },
-  {
-    icon: HiTrendingUp,
-    title: 'Compounding momentum',
-    body: 'Each cycle builds on the last, so progress compounds instead of resetting.',
-    tag: 'Self-reinforcing',
-    iconColor: 'text-blue-500',
-  },
 ];
 
-export interface PillarsSectionProps {
-  eyebrow?: string;
-  title?: string;
-  pillars?: Pillar[];
-}
-
-export default function PillarsSection({
-  eyebrow = 'Pillars',
-  title = 'Four foundations that keep momentum alive.',
-  pillars = defaultPillars,
-}: PillarsSectionProps) {
+export default function PillarsSection() {
+  const { t } = useTranslation();
   const sectionRef = useScrollReveal<HTMLElement>('[data-anim]', { preset: 'staggerCards', stagger: 120 });
 
   return (
     <section ref={sectionRef} data-scroll className="w-full bg-black px-6 py-20 font-sans text-[var(--text-primary)] md:px-12 md:py-24">
       <div className="mx-auto flex max-w-7xl flex-col items-center">
         <span data-anim className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#D97B29]">
-          {eyebrow}
+          {t("pillars.eyebrow")}
         </span>
         <h1 data-anim className="mb-12 max-w-3xl text-center text-3xl leading-[0.98] font-medium tracking-tight md:text-5xl text-wrap balance">
-          {title}
+          {t("pillars.title")}
         </h1>
 
         <div className="grid w-full max-w-6xl grid-cols-1 gap-4 md:grid-cols-3">
-          {pillars.map((pillar, index) => {
+          {defaultPillars.map((pillar, index) => {
             const Icon = pillar.icon;
             const isTall = pillar.tall;
             return (
@@ -151,6 +135,17 @@ export default function PillarsSection({
               </Card>
             );
           })}
+
+          <Card
+            data-anim
+            className="rounded-2xl border border-white/10 bg-[#FF4202] transition-[background-color,border-color,box-shadow] duration-300 hover:bg-[#FF4202]/90 hover:border-white/20 hover:shadow-[0_10px_30px_rgba(0,0,0,0.4)] cursor-pointer"
+          >
+            <CardContent className="flex h-full flex-col items-center justify-center p-6">
+              <span className="text-5xl font-bold text-white shadow-[inset_0_0_8px_0.5px_rgba(255,255,255,0.3)]">
+                Go !
+              </span>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </section>

@@ -1,4 +1,3 @@
-import { FaArrowRight } from 'react-icons/fa6';
 import Hero31, { Footer7, ComparisonBlock, Team4 } from './index';
 import NavigationSection from './navigation-section';
 import ProjectInquirySection from './project-inquiry-section';
@@ -14,10 +13,6 @@ import LogoIcon from '@/assets/logo-icon';
 import ScrollProgress from '@/components/ScrollProgress';
 import { useLocomotiveScroll } from '@/lib/useLocomotiveScroll';
 
-export function Contact3Demo() {
-  return <ProjectInquirySection />;
-}
-
 export default function Demo() {
   useLocomotiveScroll();
 
@@ -25,61 +20,46 @@ export default function Demo() {
     <div className="w-full">
       <ScrollProgress />
       <NavigationSection />
-      <Hero31
-        title="Innovation that Drives Impact."
-        subtitle="Startuper.io empowers teams to build, scale, and transform with technology that drives real results."
-        ctaText="Request a Demo"
-        trustedByText="TRUSTED BY AMBITIOUS TEAMS"
-      />
-      <ProblemSection />
-      <SolutionSection />
-      <PillarsSection />
-      <ProofSection />
-      <TestimonialsSection />
-      <Team4 />
-      <ComparisonBlock />
-      <ProgramSection />
-      <FaqSection />
-      <FinalCtaSection />
-      <ProjectInquirySection />
+      <section id="hero">
+        <Hero31 />
+      </section>
+      <section id="problem">
+        <ProblemSection />
+      </section>
+      <section id="method">
+        <SolutionSection />
+      </section>
+      <section id="pillars">
+        <PillarsSection />
+      </section>
+      <section id="proof">
+        <ProofSection />
+      </section>
+      <section id="testimonials">
+        <TestimonialsSection />
+      </section>
+      <section id="team">
+        <Team4 />
+      </section>
+      <section id="comparison">
+        <ComparisonBlock />
+      </section>
+      <section id="program">
+        <ProgramSection />
+      </section>
+      <section id="faq">
+        <FaqSection />
+      </section>
+      <section id="cta">
+        <FinalCtaSection />
+      </section>
+      <section id="contact">
+        <ProjectInquirySection />
+      </section>
       <Footer7
         logo={<LogoIcon className="size-8" />}
         brandName="Startuper.io"
-        badgeText="Loved by Creators"
-        headline="Fresh insights, tutorials, and updates delivered to your inbox."
-        inputPlaceholder="Enter your email"
-        buttonText="Stay Updated"
-        buttonIcon={<FaArrowRight />}
         backgroundImage="/footer-bg.avif"
-        linkGroups={[
-          {
-            title: 'COMPANY',
-            links: [
-              { label: 'About Us', href: '#' },
-              { label: 'Careers', href: '#' },
-              { label: 'Press Kit', href: '#' },
-              { label: 'Blog', href: '#' },
-            ],
-          },
-          {
-            title: 'SOLUTIONS',
-            links: [
-              { label: 'Analytics', href: '#' },
-              { label: 'Automation', href: '#' },
-              { label: 'Integrations', href: '#' },
-              { label: 'Enterprise', href: '#' },
-            ],
-          },
-          {
-            title: 'SUPPORT',
-            links: [
-              { label: 'Help Center', href: '#' },
-              { label: 'Documentation', href: '#' },
-              { label: 'Community', href: '#' },
-              { label: 'Status', href: '#' },
-            ],
-          },
-        ]}
         brandWatermark="Startuper.io"
       />
     </div>

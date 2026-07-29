@@ -46,7 +46,7 @@ export function CountUp({
   const formatted = displayValue.toFixed(decimals)
 
   const intDigits = Math.max(Math.floor(Math.abs(to)).toString().length, 1)
-  const numChars = intDigits + (decimals > 0 ? 1 + decimals : 0)
+  const numChars = intDigits + (decimals > 0 ? 1 + decimals : 0) + prefix.length + suffix.length
 
   return (
     <span ref={ref} className={`tabular-nums inline-block ${className ?? ''}`.trim()} style={{ minWidth: `${numChars}ch` }}>

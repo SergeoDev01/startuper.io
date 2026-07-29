@@ -19,7 +19,7 @@ export default function FinalCtaSection({
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            'radial-gradient(60% 60% at 50% 0%, rgba(249, 115, 22, 0.12) 0%, rgba(249, 115, 22, 0) 70%)',
+            'radial-gradient(60% 60% at 50% 0%, rgba(255, 66, 2, 0.15) 0%, rgba(255, 66, 2, 0) 70%)',
         }}
         data-scroll
         data-scroll-speed="-0.2"

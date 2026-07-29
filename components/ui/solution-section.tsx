@@ -88,7 +88,7 @@ export default function SolutionSection({
 
         <div className="mt-12 relative grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-20">
           {/* Left: trigger list */}
-          <div className="py-[15vh]">
+          <div className="pt-[15vh] pb-[55vh]">
             {steps.map((step, index) => {
               const isActive = activeIdx === index;
 

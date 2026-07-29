@@ -1,5 +1,5 @@
 import { FaArrowRight } from 'react-icons/fa6';
-import Hero31, { Footer7, ComparisonBlock } from './index';
+import Hero31, { Footer7, ComparisonBlock, Team4 } from './index';
 import NavigationSection from './navigation-section';
 import ProjectInquirySection from './project-inquiry-section';
 import ProblemSection from './problem-section';
@@ -36,6 +36,7 @@ export default function Demo() {
       <PillarsSection />
       <ProofSection />
       <TestimonialsSection />
+      <Team4 />
       <ComparisonBlock />
       <ProgramSection />
       <FaqSection />

@@ -1,5 +1,5 @@
-import { useRef } from 'react';
-import { motion, useScroll, useTransform, useSpring } from 'motion/react';
+import { useEffect, useRef, useState } from 'react';
+import { motion } from 'motion/react';
 
 interface MethodStep {
   title: string;
@@ -34,20 +34,45 @@ export default function SolutionSection({
   paragraph = 'We replace fragmented execution with a single, continuous motion — so the work keeps moving long after the kickoff ends.',
   steps = defaultSteps,
 }: SolutionSectionProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end end'],
-  });
+  const [activeIdx, setActiveIdx] = useState(0);
+  const activeRef = useRef(0);
 
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
+  useEffect(() => {
+    const handleScroll = () => {
+      const els = document.querySelectorAll<HTMLElement>('[data-step]');
+      const vh = window.innerHeight;
+      const zoneTop = vh * 0.4;
+      const zoneBottom = vh * 0.6;
+
+      let bestIdx = activeRef.current;
+      let bestOverlap = 0;
+
+      els.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        const overlapTop = Math.max(rect.top, zoneTop);
+        const overlapBottom = Math.min(rect.bottom, zoneBottom);
+        const overlap = Math.max(0, overlapBottom - overlapTop);
+        const idx = parseInt(el.getAttribute('data-step') || '0', 10);
+
+        if (overlap > bestOverlap) {
+          bestOverlap = overlap;
+          bestIdx = idx;
+        }
+      });
+
+      if (bestIdx !== activeRef.current) {
+        activeRef.current = bestIdx;
+        setActiveIdx(bestIdx);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <section ref={containerRef} data-scroll className="relative w-full bg-[var(--bg-secondary)] px-6 py-20 font-sans text-[var(--text-primary)] md:px-12 md:py-24">
+    <section data-scroll className="relative w-full bg-[var(--bg-secondary)] px-6 py-20 font-sans text-[var(--text-primary)] md:px-12 md:py-24">
       <div className="mx-auto max-w-7xl">
         <div className="flex max-w-[42rem] flex-col gap-4">
           <span className="text-sm font-semibold uppercase tracking-[0.2em] text-[#D97B29]">
@@ -65,22 +90,26 @@ export default function SolutionSection({
           {/* Left: trigger list */}
           <div className="py-[15vh]">
             {steps.map((step, index) => {
-              const start = index / steps.length;
-              const end = (index + 1) / steps.length;
-              const opacity = useTransform(smoothProgress, [start, start + 0.1, end - 0.1, end], [0.2, 1, 1, 0.2]);
+              const isActive = activeIdx === index;
 
               return (
                 <div
                   key={index}
-                  className="flex min-h-[30vh] flex-col justify-center py-4 scroll-mt-[40vh]"
+                  data-step={index}
+                  className="relative flex min-h-[30vh] flex-col justify-center py-4 scroll-mt-[40vh]"
                 >
-                    <motion.div
-                      style={{ opacity }}
-                      className="relative -mx-6 rounded-md p-6 transition duration-300 bg-white/[0.05] text-[var(--text-primary)] shadow-sm"
-                    >
-                    <span className="text-xs font-semibold tabular-nums tracking-[0.2em] text-[var(--text-tertiary)]">
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
+                  <motion.span
+                    animate={{ opacity: isActive ? 1 : 0.15 }}
+                    transition={{ duration: 0.5, ease: 'easeOut' }}
+                    className="absolute left-0 -top-5 z-20 text-7xl font-bold leading-none text-[#FF4202] select-none sm:text-8xl"
+                  >
+                    {String(index + 1).padStart(2, '0')}
+                  </motion.span>
+                  <motion.div
+                    animate={{ opacity: isActive ? 1 : 0.25 }}
+                    transition={{ duration: 0.5, ease: 'easeOut' }}
+                    className="relative z-10 -mx-6 rounded-md p-6 bg-white/[0.05] text-[var(--text-primary)] shadow-sm"
+                  >
                     <div className="mt-2 text-2xl font-medium tracking-tight md:text-3xl">
                       {step.title}
                     </div>
@@ -105,15 +134,13 @@ export default function SolutionSection({
                 </div>
 
                 {steps.map((step, index) => {
-                  const start = index / steps.length;
-                  const end = (index + 1) / steps.length;
-                  const opacity = useTransform(smoothProgress, [start, start + 0.1, end - 0.1, end], [0, 1, 1, 0]);
-                  const scale = useTransform(smoothProgress, [start, start + 0.1, end - 0.1, end], [0.95, 1, 1, 0.95]);
+                  const isActive = activeIdx === index;
 
                   return (
                     <motion.div
                       key={index}
-                      style={{ opacity, scale }}
+                      animate={{ opacity: isActive ? 1 : 0, scale: isActive ? 1 : 0.95 }}
+                      transition={{ duration: 0.5, ease: 'easeOut' }}
                       className="absolute inset-0 flex items-center justify-center rounded-lg border border-white/10 bg-white/[0.03] p-8 shadow-[inset_0_1px_0px_rgba(255,255,255,0.06)] backdrop-blur-md flex flex-col justify-between"
                     >
                       <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--text-tertiary)]">

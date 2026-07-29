@@ -54,23 +54,26 @@ export default function Hero31({
 
       tl.fromTo(
         svgRef1.current,
-        { y: 280, opacity: 0, rotate: -8, filter: "drop-shadow(0px 0px 0px rgba(255,66,2,0))" },
+        { y: 280, opacity: 0, rotate: 180, filter: "drop-shadow(0px 0px 0px rgba(255,66,2,0))" },
         { y: 0, opacity: 1, rotate: 0, filter: "drop-shadow(0px 0px 28px rgba(255,66,2,0.45))", duration: 2.0, ease: "expo.out" },
+        0,
       )
         .fromTo(
           svgRef2.current,
-          { y: 340, opacity: 0, rotate: 6, filter: "drop-shadow(0px 0px 0px rgba(255,66,2,0))" },
+          { y: 340, opacity: 0, rotate: -270, filter: "drop-shadow(0px 0px 0px rgba(255,66,2,0))" },
           { y: 0, opacity: 1, rotate: 0, filter: "drop-shadow(0px 0px 28px rgba(255,66,2,0.45))", duration: 2.3, ease: "expo.out" },
-          "-=1.6",
+          0,
         )
         .fromTo(
           svgRef3.current,
-          { y: 310, opacity: 0, rotate: -5, filter: "drop-shadow(0px 0px 0px rgba(255,66,2,0))" },
+          { y: 310, opacity: 0, rotate: 220, filter: "drop-shadow(0px 0px 0px rgba(255,66,2,0))" },
           { y: 0, opacity: 1, rotate: 0, filter: "drop-shadow(0px 0px 28px rgba(255,66,2,0.45))", duration: 2.5, ease: "expo.out" },
-          "-=1.9",
+          0,
         );
 
-      const sustained = "+=0.4";
+      tl.to(svgRef1.current, { rotation: 360, duration: 25, repeat: -1, ease: "none" }, 2.0);
+      tl.to(svgRef2.current, { rotation: -360, duration: 15, repeat: -1, ease: "none" }, 2.3);
+      tl.to(svgRef3.current, { rotation: 360, duration: 22, repeat: -1, ease: "none" }, 2.5);
 
       tl.to(
         [svgRef1.current, svgRef2.current, svgRef3.current],
@@ -82,12 +85,8 @@ export default function Hero31({
           ease: "sine.inOut",
           stagger: 0.6,
         },
-        sustained,
+        2.5,
       );
-
-      tl.to(svgRef1.current, { rotation: 360, duration: 25, repeat: -1, ease: "none" }, sustained);
-      tl.to(svgRef2.current, { rotation: -360, duration: 15, repeat: -1, ease: "none" }, sustained);
-      tl.to(svgRef3.current, { rotation: 360, duration: 22, repeat: -1, ease: "none" }, sustained);
     }, sectionRef);
 
     return () => ctx.revert();

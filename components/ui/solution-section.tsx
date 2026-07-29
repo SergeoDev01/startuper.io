@@ -139,24 +139,34 @@ export default function SolutionSection({
                   return (
                     <motion.div
                       key={index}
-                      animate={{ opacity: isActive ? 1 : 0, scale: isActive ? 1 : 0.95 }}
-                      transition={{ duration: 0.5, ease: 'easeOut' }}
-                      className="absolute inset-0 flex items-center justify-center rounded-lg border border-white/10 bg-white/[0.03] p-8 shadow-[inset_0_1px_0px_rgba(255,255,255,0.06)] backdrop-blur-md flex flex-col justify-between"
+                      animate={{ opacity: isActive ? 1 : 0 }}
+                      transition={{ duration: 0.4, ease: "easeOut" }}
+                      className="absolute inset-0 flex flex-col overflow-hidden rounded-lg border border-white/10 bg-white/[0.03] shadow-[inset_0_1px_0px_rgba(255,255,255,0.06)] backdrop-blur-md"
                     >
-                      <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--text-tertiary)]">
-                        Phase {String(index + 1).padStart(2, '0')}
-                      </span>
-                      <div className="flex flex-col gap-3">
-                        <span className="text-2xl font-medium tracking-tight text-[var(--text-primary)] md:text-3xl">
-                          {step.title}
-                        </span>
-                        <p className="text-sm font-light leading-relaxed text-[var(--text-body)] md:text-base">
-                          {step.content}
-                        </p>
+                      <div className="relative h-1/2 overflow-hidden">
+                        <img
+                          src={`https://placehold.co/600x300/FF5E00/1a1a1a?text=${encodeURIComponent(step.title)}`}
+                          alt={step.title}
+                          className="h-full w-full object-cover"
+                          loading="lazy"
+                        />
                       </div>
-                      <span className="text-xs font-light tabular-nums text-[var(--text-tertiary)]">
-                        {String(index + 1).padStart(2, '0')} / {String(steps.length).padStart(2, '0')}
-                      </span>
+                      <div className="flex flex-1 flex-col justify-between p-6">
+                        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--text-tertiary)]">
+                          Phase {String(index + 1).padStart(2, '0')}
+                        </span>
+                        <div className="flex flex-col gap-2">
+                          <span className="text-xl font-medium tracking-tight text-[var(--text-primary)] md:text-2xl">
+                            {step.title}
+                          </span>
+                          <p className="text-xs font-light leading-relaxed text-[var(--text-body)] md:text-sm">
+                            {step.content}
+                          </p>
+                        </div>
+                        <span className="text-xs font-light tabular-nums text-[var(--text-tertiary)]">
+                          {String(index + 1).padStart(2, '0')} / {String(steps.length).padStart(2, '0')}
+                        </span>
+                      </div>
                     </motion.div>
                   );
                 })}

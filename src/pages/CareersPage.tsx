@@ -13,7 +13,7 @@ export default function CareersPage() {
       <section className={`${section.base} pt-32`}>
         <div className={section.container}>
           <div className="max-w-3xl">
-            <span className={type.eyebrow}>Careers</span>
+            <span className={type.eyebrow}>{t("careersPage.eyebrow")}</span>
             <h1 className={`${type.h2} mt-4`}>{t("careersPage.title")}</h1>
             <p className={`${type.body} mt-4`}>{t("careersPage.subtitle")}</p>
           </div>
@@ -27,7 +27,7 @@ export default function CareersPage() {
               <div className="flex items-center gap-3">
                 <Heart className="h-5 w-5 text-[#FF4202]" />
                 <span className="text-sm font-semibold uppercase tracking-[0.2em] text-[#D97B29]">
-                  Why join
+                  {t("careersPage.whyJoin")}
                 </span>
               </div>
               <p className="mt-4 text-base leading-relaxed text-[var(--text-body)]">
@@ -56,7 +56,7 @@ export default function CareersPage() {
                     </div>
                   </div>
                   <button className="shrink-0 rounded-md bg-white/10 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white/20">
-                    Apply
+                    {t("careersPage.apply")}
                   </button>
                 </div>
               ))}

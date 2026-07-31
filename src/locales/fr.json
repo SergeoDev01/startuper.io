@@ -212,6 +212,8 @@
 
   "blogPage.title": "Insights de la tranchée.",
   "blogPage.subtitle": "Playbooks, études de cas et avis honnêtes sur ce qu'il faut vraiment pour passer de zéro à prêt à lever.",
+  "blogPage.eyebrow": "Blog",
+  "blogPage.readMore": "Lire la suite",
   "blogPage.post1.title": "Les trois signes que votre startup a besoin de structure (pas de plus de temps)",
   "blogPage.post1.excerpt": "La plupart des fondateurs pensent qu'ils ont besoin de plus de temps. Ce dont ils ont réellement besoin est un cadre de décision. Voici comment faire la différence — et quoi faire ensuite.",
   "blogPage.post1.date": "15 mars 2026",
@@ -231,6 +233,9 @@
 
   "careersPage.title": "Rejoignez l'équipe.",
   "careersPage.subtitle": "Nous construisons le système d'exploitation des startups en early-stage. Si ça vous parle, parlons-en.",
+  "careersPage.eyebrow": "Carrières",
+  "careersPage.whyJoin": "Pourquoi nous rejoindre",
+  "careersPage.apply": "Postuler",
   "careersPage.why": "Startuper.io est une petite équipe soudée. Nous allons vite, nous travaillons directement avec les fondateurs, et nous sommes obsédés par les résultats — pas par les heures. Chaque rôle a une exposition directe aux startups que nous accompagnons. Vous ne serez pas isolé.",
   "careersPage.values": "Responsabilité plutôt qu'approbation. Communication directe plutôt que process. Traction réelle plutôt que diapositives. Si ces valeurs résonnent avec vous, vous vous intégrerez.",
   "careersPage.position1.title": "Partenaire Startup (Track Opérateur)",
@@ -263,6 +268,11 @@
 
   "contactPage.title": "Contactez-nous.",
   "contactPage.subtitle": "Une question sur le programme, la méthode ou votre candidature ? Nous serions ravis de vous entendre.",
+  "contactPage.eyebrow": "Contact",
+  "contactPage.directContact": "Contact direct",
+  "contactPage.responseTime": "Temps de réponse",
+  "contactPage.responseTimeValue": "< 48h",
+  "contactPage.responseTimeNote": "Nous répondons personnellement à chaque message sous 48 heures.",
   "contactPage.name": "Nom",
   "contactPage.namePlaceholder": "Alex Morgan",
   "contactPage.email": "Email",

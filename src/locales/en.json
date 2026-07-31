@@ -212,6 +212,8 @@
 
   "blogPage.title": "Insights from the trenches.",
   "blogPage.subtitle": "Playbooks, case studies, and honest takes on what it actually takes to get from zero to raise-ready.",
+  "blogPage.eyebrow": "Blog",
+  "blogPage.readMore": "Read more",
   "blogPage.post1.title": "The three signs your startup needs structure (not more time)",
   "blogPage.post1.excerpt": "Most founders think they need more time. What they actually need is a decision framework. Here's how to tell the difference — and what to do about it.",
   "blogPage.post1.date": "March 15, 2026",
@@ -231,6 +233,9 @@
 
   "careersPage.title": "Join the team.",
   "careersPage.subtitle": "We're building the operating system for early-stage startups. If that sounds like your kind of problem, we should talk.",
+  "careersPage.eyebrow": "Careers",
+  "careersPage.whyJoin": "Why join",
+  "careersPage.apply": "Apply",
   "careersPage.why": "Startuper.io is a small, focused team. We move fast, we work directly with founders, and we're obsessed with outcomes — not hours. Every role has direct exposure to the startups we work with. You won't be siloed.",
   "careersPage.values": "Ownership over approval. Direct communication over process. Real traction over slide decks. If these resonate, you'll fit in.",
   "careersPage.position1.title": "Startup Partner (Operator Track)",
@@ -263,6 +268,11 @@
 
   "contactPage.title": "Get in touch.",
   "contactPage.subtitle": "Have a question about the programme, the method, or your application? We'd love to hear from you.",
+  "contactPage.eyebrow": "Contact",
+  "contactPage.directContact": "Direct contact",
+  "contactPage.responseTime": "Response time",
+  "contactPage.responseTimeValue": "< 48h",
+  "contactPage.responseTimeNote": "We reply to every message personally within 48 hours.",
   "contactPage.name": "Name",
   "contactPage.namePlaceholder": "Alex Morgan",
   "contactPage.email": "Email",

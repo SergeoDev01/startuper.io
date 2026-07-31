@@ -23,7 +23,7 @@ export default function ContactPage() {
       <section className={`${section.base} pt-32`}>
         <div className={section.container}>
           <div className="max-w-3xl">
-            <span className={type.eyebrow}>Contact</span>
+            <span className={type.eyebrow}>{t("contactPage.eyebrow")}</span>
             <h1 className={`${type.h2} mt-4`}>{t("contactPage.title")}</h1>
             <p className={`${type.body} mt-4`}>{t("contactPage.subtitle")}</p>
           </div>
@@ -100,7 +100,7 @@ export default function ContactPage() {
               <div className="sticky top-24 space-y-4">
                 <div className={`${surface.card} p-6 md:p-8`}>
                   <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#D97B29]">
-                    Direct contact
+                    {t("contactPage.directContact")}
                   </span>
                   <div className="mt-4 space-y-3">
                     <a
@@ -128,10 +128,10 @@ export default function ContactPage() {
                 </div>
 
                 <div className="rounded-lg bg-[#FF4202] p-6 text-white md:p-8">
-                  <h3 className="text-lg font-medium">Response time</h3>
-                  <p className="mt-2 text-3xl font-bold">&lt; 48h</p>
+                  <h3 className="text-lg font-medium">{t("contactPage.responseTime")}</h3>
+                  <p className="mt-2 text-3xl font-bold">{t("contactPage.responseTimeValue")}</p>
                   <p className="mt-2 text-sm opacity-80">
-                    We reply to every message personally within 48 hours.
+                    {t("contactPage.responseTimeNote")}
                   </p>
                 </div>
               </div>

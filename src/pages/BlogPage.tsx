@@ -12,7 +12,7 @@ export default function BlogPage() {
       <section className={`${section.base} pt-32`}>
         <div className={section.container}>
           <div className="max-w-3xl">
-            <span className={type.eyebrow}>Blog</span>
+            <span className={type.eyebrow}>{t("blogPage.eyebrow")}</span>
             <h1 className={`${type.h2} mt-4`}>{t("blogPage.title")}</h1>
             <p className={`${type.body} mt-4`}>{t("blogPage.subtitle")}</p>
           </div>
@@ -39,7 +39,7 @@ export default function BlogPage() {
                   {t(`blogPage.post${id}.excerpt`)}
                 </p>
                 <div className="mt-4 flex items-center gap-1 text-sm font-medium text-[#FF4202]">
-                  <span>Read more</span>
+                  <span>{t("blogPage.readMore")}</span>
                   <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <line x1="5" y1="12" x2="19" y2="12" />
                     <polyline points="12 5 19 12 12 19" />

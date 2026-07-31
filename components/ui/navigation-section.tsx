@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import LogoIcon from '@/assets/logo-icon';
 import { Menu, X, Globe } from 'lucide-react';
 import { useTranslation, type Locale } from '@/lib/i18n';
@@ -9,9 +10,9 @@ interface NavLink {
 }
 
 const navLinks: NavLink[] = [
-  { label: 'nav.method', href: '#method' },
-  { label: 'nav.testimonials', href: '#testimonials' },
-  { label: 'nav.faq', href: '#faq' },
+  { label: 'nav.method', href: '/method' },
+  { label: 'nav.testimonials', href: '/customers' },
+  { label: 'nav.faq', href: '/faq' },
 ];
 
 const locales: { code: Locale; label: string }[] = [
@@ -29,25 +30,25 @@ export default function NavigationSection() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-center px-6">
         <div className="flex items-center gap-8">
           {/* Logo */}
-          <div className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2">
             <div className="flex h-8 w-8 items-center justify-center text-white">
               <LogoIcon className="h-6 w-6 text-white" />
             </div>
             <span className="text-lg font-bold tracking-tight text-white">
               {t("nav.logo")}
             </span>
-          </div>
+          </Link>
 
           {/* Desktop links */}
           <nav className="hidden items-center gap-1 lg:flex">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.label}
-                href={link.href}
+                to={link.href}
                 className="flex items-center gap-2 rounded-md px-3 py-1.5 text-sm font-medium text-white/70 transition-colors hover:bg-white/10 hover:text-white"
               >
                 {t(link.label)}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -85,12 +86,18 @@ export default function NavigationSection() {
               )}
             </div>
 
-            <button className="rounded-md px-3 py-2 text-sm font-medium text-white/70 transition-colors hover:bg-white/10 hover:text-white active:scale-[0.96]">
+            <Link
+              to="/sign-in"
+              className="rounded-md px-3 py-2 text-sm font-medium text-white/70 transition-colors hover:bg-white/10 hover:text-white active:scale-[0.96]"
+            >
               {t("nav.signIn")}
-            </button>
-            <button className="rounded-md bg-[#FF4202] px-4 py-2 text-sm font-semibold text-white shadow-[inset_0_0_8px_0.5px_rgba(255,255,255,0.3)] transition-transform active:scale-[0.96]">
+            </Link>
+            <Link
+              to="/apply"
+              className="rounded-md bg-[#FF4202] px-4 py-2 text-sm font-semibold text-white shadow-[inset_0_0_8px_0.5px_rgba(255,255,255,0.3)] transition-transform active:scale-[0.96]"
+            >
               {t("nav.applyNow")}
-            </button>
+            </Link>
           </div>
         </div>
 
@@ -109,14 +116,14 @@ export default function NavigationSection() {
         <div className="border-t border-white/10 bg-black/60 backdrop-blur-xl lg:hidden">
           <div className="mx-auto flex max-w-7xl flex-col gap-1 px-6 py-4">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.label}
-                href={link.href}
+                to={link.href}
                 onClick={() => setMobileOpen(false)}
                 className="flex items-center justify-between rounded-lg px-3 py-2 text-base font-medium text-white/80 transition-colors hover:bg-white/10 hover:text-white"
               >
                 {t(link.label)}
-              </a>
+              </Link>
             ))}
 
             {/* Language switcher mobile */}
@@ -137,12 +144,20 @@ export default function NavigationSection() {
             </div>
 
             <div className="mt-4 flex flex-col gap-3 border-t border-white/10 pt-4">
-              <button className="w-full justify-center rounded-md border border-white/15 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white/10 active:scale-[0.96]">
+              <Link
+                to="/sign-in"
+                onClick={() => setMobileOpen(false)}
+                className="w-full justify-center rounded-md border border-white/15 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white/10 active:scale-[0.96] text-center"
+              >
                 {t("nav.signIn")}
-              </button>
-              <button className="w-full justify-center rounded-md bg-[#FF4202] px-4 py-2 text-sm font-semibold text-white shadow-[inset_0_0_8px_0.5px_rgba(255,255,255,0.3)] active:scale-[0.96]">
+              </Link>
+              <Link
+                to="/apply"
+                onClick={() => setMobileOpen(false)}
+                className="w-full justify-center rounded-md bg-[#FF4202] px-4 py-2 text-sm font-semibold text-white shadow-[inset_0_0_8px_0.5px_rgba(255,255,255,0.3)] active:scale-[0.96] text-center"
+              >
                 {t("nav.applyNow")}
-              </button>
+              </Link>
             </div>
           </div>
         </div>

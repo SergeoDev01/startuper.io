@@ -3,6 +3,7 @@ import { animate, stagger } from 'animejs';
 import { Button } from '@/components/base-ui/button';
 import { Input } from '@/components/base-ui/input';
 import { useTranslation } from '@/lib/i18n';
+import { Link } from 'react-router-dom';
 
 export interface Footer7Props {
   logo?: ReactNode;
@@ -62,27 +63,27 @@ export function Footer7({
     {
       title: t("footer.column1.title"),
       links: [
-        { label: t("footer.column1.link1"), href: '#' },
-        { label: t("footer.column1.link2"), href: '#' },
-        { label: t("footer.column1.link3"), href: '#' },
-        { label: t("footer.column1.link4"), href: '#' },
+        { label: t("footer.column1.link1"), href: '/about' },
+        { label: t("footer.column1.link2"), href: '/team' },
+        { label: t("footer.column1.link3"), href: '/blog' },
+        { label: t("footer.column1.link4"), href: '/careers' },
       ],
     },
     {
       title: t("footer.column2.title"),
       links: [
-        { label: t("footer.column2.link1"), href: '#method' },
-        { label: t("footer.column2.link2"), href: '#' },
-        { label: t("footer.column2.link3"), href: '#' },
-        { label: t("footer.column2.link4"), href: '#' },
+        { label: t("footer.column2.link1"), href: '/method' },
+        { label: t("footer.column2.link2"), href: '/admission' },
+        { label: t("footer.column2.link3"), href: '/apply' },
+        { label: t("footer.column2.link4"), href: '/faq' },
       ],
     },
     {
       title: t("footer.column3.title"),
       links: [
-        { label: t("footer.column3.link1"), href: '#' },
-        { label: t("footer.column3.link2"), href: '#' },
-        { label: t("footer.column3.link3"), href: '#' },
+        { label: t("footer.column3.link1"), href: '/contact' },
+        { label: t("footer.column3.link2"), href: '/privacy' },
+        { label: t("footer.column3.link3"), href: '/terms' },
       ],
     },
     {
@@ -144,13 +145,13 @@ export function Footer7({
           <div data-anim className="flex flex-col gap-10 pb-6 lg:flex-row lg:items-start lg:gap-8">
             <div className="flex flex-1 items-center gap-3 lg:pt-1">
               {logo && (
-                <div className="text-white flex h-6 w-6 shrink-0 items-center justify-center [&>svg]:h-full [&>svg]:w-full">
+                <Link to="/" className="text-white flex h-6 w-6 shrink-0 items-center justify-center [&>svg]:h-full [&>svg]:w-full">
                   {logo}
-                </div>
+                </Link>
               )}
-              <span className="text-white text-base font-medium tracking-tight">
+              <Link to="/" className="text-white text-base font-medium tracking-tight">
                 {brandName}
-              </span>
+              </Link>
             </div>
 
             {linkGroups.length > 0 && (
@@ -163,12 +164,23 @@ export function Footer7({
                     <ul className="flex flex-col gap-3">
                       {group.links.map((link, linkIndex) => (
                         <li key={linkIndex}>
-                          <a
-                            href={link.href}
-                            className="hover:text-white text-sm text-white/70 transition-colors"
-                          >
-                            {link.label}
-                          </a>
+                          {link.href.startsWith('/') ? (
+                            <Link
+                              to={link.href}
+                              className="hover:text-white text-sm text-white/70 transition-colors"
+                            >
+                              {link.label}
+                            </Link>
+                          ) : (
+                            <a
+                              href={link.href}
+                              className="hover:text-white text-sm text-white/70 transition-colors"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {link.label}
+                            </a>
+                          )}
                         </li>
                       ))}
                     </ul>

@@ -2,8 +2,11 @@ import { Outlet } from 'react-router-dom';
 import NavigationSection from '@/components/ui/navigation-section';
 import { Footer7 } from '@/components/ui/footer-7';
 import LogoIcon from '@/assets/logo-icon';
+import { useLocomotiveScroll } from '@/lib/useLocomotiveScroll';
 
 export default function RootLayout() {
+  useLocomotiveScroll();
+
   return (
     <div className="w-full">
       <NavigationSection />

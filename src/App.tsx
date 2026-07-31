@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import RootLayout from '@/components/layout/RootLayout';
+import ScrollToTop from '@/components/layout/ScrollToTop';
 import Demo from '@/components/ui/demo';
 import MethodPage from '@/pages/MethodPage';
 import CustomersPage from '@/pages/CustomersPage';
@@ -18,7 +19,9 @@ import ErrorOne, { defaultErrorOneAction } from '@/components/ui/error-one';
 
 export default function App() {
   return (
-    <Routes>
+    <>
+      <ScrollToTop />
+      <Routes>
       <Route path="/" element={<Demo />} />
       <Route element={<RootLayout />}>
         <Route path="/method" element={<MethodPage />} />
@@ -46,6 +49,7 @@ export default function App() {
           />
         }
       />
-    </Routes>
+      </Routes>
+    </>
   );
 }

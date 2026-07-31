@@ -11,14 +11,17 @@ export default function SolutionSection() {
     {
       title: t("method.step1.title"),
       content: t("method.step1.body"),
+      image: '/assets/images/step1.avif',
     },
     {
       title: t("method.step2.title"),
       content: t("method.step2.body"),
+      image: '/assets/images/step2.avif',
     },
     {
       title: t("method.step3.title"),
       content: t("method.step3.body"),
+      image: '/assets/images/step3.avif',
     },
   ];
 
@@ -127,7 +130,7 @@ export default function SolutionSection() {
                     >
                       <div className="relative h-1/2 overflow-hidden">
                         <img
-                          src={`https://placehold.co/600x300/FF5E00/1a1a1a?text=${encodeURIComponent(step.title)}`}
+                          src={step.image}
                           alt={step.title}
                           className="h-full w-full object-cover"
                           loading="lazy"
